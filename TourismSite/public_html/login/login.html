@@ -7,62 +7,61 @@ and open the template in the editor.
 <html>
     <head>
         <title>Log in</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="login.css" />
-        <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.common-material.min.css" />
-        <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.material.min.css" />
-        <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.min.css" />
-        <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.material.min.css" />
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     </head>
     <body>
         <main>
-        <div id="login">
-            <form id="my_form">
-                <h3>Login with your account</h3>
-                <span id="notification"></span>
-                <ul class="login_list">
-                    <li class="block">
-                        <label for="username">Username</label>
-                    </li>
-                    <li>
-                        <input type="text" id="username" required /> <span title="Invalid Username" class="alert-icon hide" id="alert_icon_username" > </span>
+            <div id="login">
+                <form id="my_form">
+                    <h3>Login with your account</h3>
+                    <span id="notification"></span>
+                    <ul class="login_list">
+                        <li class="block">
+                            <label for="username">Username</label>
+                        </li>
+                        <li>
+                            <input type="text" id="username" required /> <span title="Invalid Username" class="alert-icon hide" id="alert_icon_username" > </span>
 
-                    </li>
-                    <li class="block">
-                        <label for="password">Password</label>
-                    </li>
-                    <li>
-                        <input type="password" id="password" required /> <span title="Invalid Password" class="alert-icon hide" id="alert_icon_password"> </span>
-                    </li>
-                    <li class="li_kendo">
-                        <input type="button" value="Login" id="login_button"  />
-                        <input type="button" value="Register" id="register_button"  />
-                        <div id="kendo_window"></div>
-                    </li>
-                </ul>
-            </form>
-        </div>
+                        </li>
+                        <li class="block">
+                            <label for="password">Password</label>
+                        </li>
+                        <li>
+                            <input type="password" id="password" required /> <span title="Invalid Password" class="alert-icon hide" id="alert_icon_password"> </span>
+                        </li>
+                        <li class="li_kendo">
+                            <input type="button" value="Login" id="login_button"  />
+                            <input type="button" value="Register" id="register_button"  />
+                            <div id="kendo_window"></div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
             <div id="divide">
                 <h3>or</h3>
-                </div>
-        <div id="login_with">
-            <h3>Login with:</h3>
-            <button type="button" id="login_with_facebook" > 
-                <img src="https://www.facebook.com/images/fb_icon_325x325.png"  id="image_facebook" alt="Facebook icon"/> 
-                <span class="text">  Facebook </span> 
-            </button>
-            <button type="button" id="login_with_google"> 
-                <img src="http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Web-Google-plus-Metro-icon.png" id="image_google" alt="Google icon"/> 
-                <span class="text">   Google Plus </span>
-            </button>
-        </div>
-</main>
-        <script src="../js/plugins/jquery-3.2.0.js"></script>
-        <script src="../js/plugins/jquery-3.2.0.min.js"></script>
-        <script src="../js/plugins/kendoui/js/kendo.all.min.js"></script>
+            </div>
+            <div id="login_with">
+                <h3>Login with:</h3>
+                <button type="button" id="login_with_facebook" > 
+                    <img src="https://www.facebook.com/images/fb_icon_325x325.png"  id="image_facebook" alt="Facebook icon"/> 
+                    <span class="text">  Facebook </span> 
+                </button>
+                <button type="button" id="login_with_google"> 
+                    <img src="http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Web-Google-plus-Metro-icon.png" id="image_google" alt="Google icon"/> 
+                    <span class="text">   Google Plus </span>
+                </button>
+            </div>
+        </main>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="../js/plugins/kendoui/js/kendo.all.min.js"></script>
+        <!--        <script src="js/jquery-3.2.0.slim.js"></script>-->
+
+        <!--        <script src="../bootstrap/js/bootstrap.min.js"></script>-->
         <script src="login.js"></script>
         <script src="register.js"></script>
     </body>
