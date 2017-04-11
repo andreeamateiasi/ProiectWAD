@@ -26,3 +26,26 @@ and open the template in the editor.
     margin: 0 10% 0 10%;
     border: 3px solid #73AD21;  
 }
+.ul_offers {
+    list-style-type: none;
+    
+}
+
+
+#smth{
+    position:absolute;
+    float: left;
+    margin-left: 10%;
+}
+.li_offer_ul{
+    position: relative;
+}
+
+
+body{
+/*     background-image: url(../Photos/background.jpg);*/
+/*    background: url(../Photos/background.jpg) no-repeat center center ; */
+    background-color: #f5f5f0;
+    background-position: initial;
+}
+

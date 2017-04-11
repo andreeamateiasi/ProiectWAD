@@ -11,17 +11,16 @@ MainView.prototype = {
     attachListeners: function () {
         //$().on('click', $.proxy(this.function1, this));
        // $('nav').off();
-        $('div').on('click', 'a', $.proxy(this.onMainMenuItem, this));
+        $('li').on('click', 'a',  $.proxy(this.onMainMenuItem, this));
         //$('nav').find('#city_alerts_index').trigger('click');
     },
+   
     onMainMenuItem: function (event) {
         //event.preventDefault();
         var itemId = $(event.currentTarget).attr('id');
         switch (itemId) {
             case 'first-offer':
-                $('main').load('html/offers.html', function () {
-                   // var offers = new OffersView();
-                });
+                $('main').load('html/offers.html');
                 break;
             case 'second-offer':
                 $('main').load('html/offers.html', function () {

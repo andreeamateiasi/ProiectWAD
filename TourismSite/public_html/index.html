@@ -9,80 +9,137 @@
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="icon" href="data:;base64,iVBORw0KGgo=">
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/package.css">
     </head>
     <body>
         <header>
-            <ul class="nav nav-pills">
-                <li class="float_right"><img src="Photos/Logo.bmp" height="100" width="200"/></li>
-                <li class="tourism_h3"><h3 class="display-4" >Tourism</h3></li>
-                <li style="float: right"><button type="button" class="btn btn-primary  btn-lg" value="logIn" id="button_log_in" >Log In</button></li>
-                <li style="float: right"><button value="Register" type="button" class="btn btn-danger btn btn-primary btn-lg">Register</button></li>
-            </ul>
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Travel with us!</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Offers<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Romania</a></li>
+                                <li><a href="#">Bulgaria</a></li>
+                                <li><a href="#">Exotic</a></li>
+                                <li><a href="#">Austia</a></li>
+                                <li><a href="#">Sea side</a></li>
+                                <li><a href="#">Mountain side</a></li>
+                            </ul>
+
+                        </li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <!--            <ul class="nav nav-pills">
+                            <li class="float_right"><img src="Photos/Logo.bmp" height="100" width="200"/></li>
+                            <li class="tourism_h3"><h3 class="display-4" >Tourism</h3></li>
+                            <li style="float: right"><button type="button" class="btn btn-primary  btn-lg" value="logIn" id="button_log_in" >Log In</button></li>
+                            <li style="float: right"><button value="Register" type="button" class="btn btn-danger btn btn-primary btn-lg">Register</button></li>
+                        </ul>-->
         </header>
         <main>
-            <div class="dropdown" style="margin-left: 10%">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose your wanted destination
-                    <span class="caret"></span></button>
+            <div class="dropdown" id="smth">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdown_button">
+                    Choose your wanted destination<span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu">
                     <li><a href="#">Paris</a></li>
                     <li><a href="#">Roma</a></li>
                     <li><a href="#">Milan</a></li>
                     <li><a href="#">London</a></li>
                 </ul>
-                <button  class="btn btn-primary" style="margin-left: 5%">
-                    Search
-                </button>
             </div>
 
-            <div class="floating-box" style="margin-top: 5%" >
-                 <a  title="Early booking Bulgaria" id="first-offer">
-                <img src="Photos/bulgariaa.jpg" alt="Bulgaria" width="275" height="175">
-                <div >Early booking Bulgaria 2017</div>
 
-                 </a>
-            </div>
-            <div class="floating-box" style="margin-top: 5%" >
-                <a title="Early booking Romania" id="second-offer">
+            <!--            <div class="dropdown" style="margin-left: 10%">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose your wanted destination
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Paris</a></li>
+                                <li><a href="#">Roma</a></li>
+                                <li><a href="#">Milan</a></li>
+                                <li><a href="#">London</a></li>
+                            </ul>
+                            <button  class="btn btn-primary" style="margin-left: 5%">
+                                Search
+                            </button>
+                        </div>-->
+            <ul class="ul_offers">
+                <li class="li_offer_ul"> 
+                    <div class="floating-box" style="margin-top: 5%" >
+                        <a  title="Early booking Bulgaria" id="first-offer">
+                            <img src="Photos/bulgariaa.jpg" alt="Bulgaria" width="275" height="175">
+                            <div >Early booking Bulgaria 2017</div>
 
-                    <img src="Photos/romania.jpg" alt="Romania" width="275" height="175" >
-                    <div  >Early booking Romania 2017</div>
+                        </a>
+                    </div>
+                </li>
+                <li class="li_offer_ul">
+                    <div class="floating-box" style="margin-top: 5%" >
+                        <a title="Early booking Romania" id="second-offer">
 
-                </a>
+                            <img src="Photos/romania.jpg" alt="Romania" width="275" height="175" >
+                            <div  >Early booking Romania 2017</div>
 
-            </div>
-            <div class="floating-box" style="margin-top: 5%" >
-                <a title="Early booking Romania" id="third-offer">
+                        </a>
 
-                    <img src="Photos/exotic.jpg" alt="Romania" width="275" height="175" >
-                    <div  >Early booking Exotic destinations 2017</div>
+                    </div>
+                </li>
+                <li class="li_offer_ul">
+                    <div class="floating-box" style="margin-top: 5%" >
+                        <a title="Early booking Romania" id="third-offer">
 
-                </a>
+                            <img src="Photos/exotic.jpg" alt="Romania" width="275" height="175" >
+                            <div  >Early booking Exotic destinations 2017</div>
 
-            </div>
-            <br/>
-            <div class="floating-box" style="margin-top: 10%" > 
-                <a title="Early booking Romania" id="fourth-offer">
-                    <img src="Photos/austria.jpg" alt="Romania" width="275" height="175" >
-                    <div >Early booking Austria 2017</div>
+                        </a>
 
-                </a>
+                    </div>
+                </li>
+                <br/>
+                <li class="li_offer_ul">
+                    <div class="floating-box" style="margin-top: 10%" > 
+                        <a title="Early booking Romania" id="fourth-offer">
+                            <img src="Photos/austria.jpg" alt="Romania" width="275" height="175" >
+                            <div >Early booking Austria 2017</div>
 
-            </div>
-            <div class="floating-box" style="margin-top: 10%" >
-                <a  title="Early booking Bulgaria" id="fifth-offer">
-                    <img src="Photos/sea.jpg" alt="Bulgaria" width="275" height="175">
-                    <div>Early booking sea side 2017</div>
+                        </a>
 
-                </a>
-            </div>
-            <div class="floating-box" style="margin-top: 10%">
-                <a title="Early booking Romania"  id="sixth-offer">
-                    <img src="Photos/mountains.jpg" alt="Romania" width="275" height="175" >
-                    <div >Early booking mountain side 2017</div>
+                    </div>
+                </li>
+                <li class="li_offer_ul">
+                    <div class="floating-box" style="margin-top: 10%" >
+                        <a  title="Early booking Bulgaria" id="fifth-offer">
+                            <img src="Photos/sea.jpg" alt="Bulgaria" width="275" height="175">
+                            <div>Early booking sea side 2017</div>
 
-                </a>
+                        </a>
+                    </div>
+                </li>
+                <li class="li_offer_ul">
+                    <div class="floating-box" style="margin-top: 10%">
+                        <a title="Early booking Romania"  id="sixth-offer">
+                            <img src="Photos/mountains.jpg" alt="Romania" width="275" height="175" >
+                            <div >Early booking mountain side 2017</div>
 
-            </div>
+                        </a>
+
+                    </div>
+                </li>
+            </ul>
             <div>
 
             </div>
@@ -91,5 +148,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="js/MainView.js"></script>
+        <script src="js/OffersView.js"></script>
+        <script src="js/PackageView.js"></script>
+
     </body>
 </html>
