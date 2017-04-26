@@ -10,10 +10,10 @@ MainView.prototype = {
     },
     attachListeners: function () {
         //$().on('click', $.proxy(this.function1, this));
-        // $('nav').off();
+        $('nav').off();
         $('li').on('click', 'a', $.proxy(this.onMainMenuItem, this));
         $('nav').on('click', 'li', $.proxy(this.onNavItem, this));
-        //$('nav').find('#city_alerts_index').trigger('click');
+        //$('nav').find('#home').trigger('click');
     },
 
     onMainMenuItem: function (event) {
