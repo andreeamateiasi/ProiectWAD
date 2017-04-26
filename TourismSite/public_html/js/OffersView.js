@@ -1,5 +1,6 @@
 OffersView = function () {
     this.initComponent();
+
 };
 OffersView.prototype = {
    
@@ -10,40 +11,42 @@ OffersView.prototype = {
 
     },
     attachListeners: function () {
-       
+               console.log("i got here");
+
         $('li').on('click', 'a',  $.proxy(this.onMainMenuItemOffer, this));
     },
    
     onMainMenuItemOffer: function (event) {
         //event.preventDefault();
+        console.log("i got here");
         var itemId = $(event.currentTarget).attr('id');
         switch (itemId) {
             case 'first':
-                $('main').load('html/package.html');
+                $('#id_for_main').load('package.html');
                 break;
             case 'second':
-                $('main').load('html/package.html', function () {
-                    //var offers = new OffersView();
+                $('#id_for_main').load('package.html', function () {
+                   var package = new PackageView();
                 });
                 break;
             case 'third':
-                $('main').load('html/package.html', function () {
-                    //var offers = new OffersView();
+                $('#id_for_main').load('package.html', function () {
+                   var package = new PackageView();
                 });
                 break;
             case 'fourth':
-               $('main').load('html/package.html', function () {
-                    //var offers = new OffersView();
+               $('#id_for_main').load('package.html', function () {
+                   var package = new PackageView();
                 });
                 break;
             case 'fifth':
-                $('main').load('html/package.html', function () {
-                    //var offers = new OffersView();
+                $('#id_for_main').load('package.html', function () {
+                   var package = new PackageView();
                 });
                 break;
             case 'sixth':
-                $('main').load('html/package.html', function () {
-                    //var offers = new OffersView();
+                $('#id_for_main').load('package.html', function () {
+                   var package = new PackageView();
                 });
                 break;
 
@@ -53,6 +56,3 @@ OffersView.prototype = {
     }
 };
 
-$(document).ready(function () {
-    var mainApp = new OffersView();
-});

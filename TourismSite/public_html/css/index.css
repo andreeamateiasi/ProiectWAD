@@ -28,7 +28,7 @@ and open the template in the editor.
 }
 .ul_offers {
     list-style-type: none;
-    
+
 }
 
 
@@ -43,8 +43,8 @@ and open the template in the editor.
 
 
 body{
-/*     background-image: url(../Photos/background.jpg);*/
-/*    background: url(../Photos/background.jpg) no-repeat center center ; */
+    /*     background-image: url(../Photos/background.jpg);*/
+    /*    background: url(../Photos/background.jpg) no-repeat center center ; */
     background-color: #f5f5f0;
     background-position: initial;
 }
