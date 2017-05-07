@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace TourismApiWAD.Models
 {
     public class Package
     {
-        public int PackageId { get; set; }
+        [Key]
+        public int PackageId { get; private set; }
         public string Destination { get; set; }
         public string Plane { get; set; }
         public DateTime StartPeriod { get; set; }
@@ -18,6 +19,7 @@ namespace TourismApiWAD.Models
         public string Food { get; set; }
         public int NoPassengers { get; set; }
         public int Price { get; set; }
+        public virtual ICollection<Offer> Offer { get; set; }
 
     }
 }

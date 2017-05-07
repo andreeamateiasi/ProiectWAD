@@ -9,6 +9,8 @@ namespace TourismApiWAD.Models
     public class TourismApiWADContext: DbContext
     {
         public DbSet<User> User { get; set; }
+        public DbSet<Package> Package { get; set; }
+        public DbSet<Offer> Offer { get; set; }
 
     }
 }
