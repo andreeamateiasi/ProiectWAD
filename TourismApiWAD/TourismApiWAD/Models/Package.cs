@@ -19,7 +19,7 @@ namespace TourismApiWAD.Models
         public string Food { get; set; }
         public int NoPassengers { get; set; }
         public int Price { get; set; }
-        public virtual ICollection<Offer> Offer { get; set; }
+        //public virtual ICollection<Offer> Offer { get; set; }
 
     }
 }
