@@ -149,6 +149,11 @@ C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\bin\Micr
 C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\bin\Microsoft.AI.Web.xml
-C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.csprojResolveAssemblyReference.cache
 C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.dll
 C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.pdb
+C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.Migrations.Initial.resources
+C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.csproj.GenerateResource.Cache
+C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\bin\Swashbuckle.Core.dll
+C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\bin\WebActivatorEx.dll
+C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.Migrations.Initial1.resources
+C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.Migrations.Tourism.resources

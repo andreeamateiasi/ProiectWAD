@@ -9,12 +9,12 @@ namespace TourismApiWAD.Models
 {
     public class Package
     {
-        [Key]
+        
         public int PackageId { get; private set; }
-        public string Destination { get; set; }
-        public string Plane { get; set; }
-        public DateTime StartPeriod { get; set; }
-        public DateTime EndPeriod { get; set; }
+        public int OfferId { get; set; }
+        public string DestinationCity { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
         public string Hotel { get; set; }
         public string Food { get; set; }
         public int NoPassengers { get; set; }

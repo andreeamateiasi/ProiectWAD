@@ -31,7 +31,6 @@ and open the template in the editor.
 
 }
 
-
 #smth{
     position:absolute;
     float: left;
@@ -39,6 +38,7 @@ and open the template in the editor.
 }
 .li_offer_ul{
     position: relative;
+    float: bottom;
 }
 
 
