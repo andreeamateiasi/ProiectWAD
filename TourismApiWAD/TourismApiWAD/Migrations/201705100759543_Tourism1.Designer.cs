@@ -7,13 +7,13 @@ namespace TourismApiWAD.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Initial1 : IMigrationMetadata
+    public sealed partial class Tourism1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Tourism1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705091619065_Initial1"; }
+            get { return "201705100759543_Tourism1"; }
         }
         
         string IMigrationMetadata.Source

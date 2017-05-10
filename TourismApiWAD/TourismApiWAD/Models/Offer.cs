@@ -11,6 +11,7 @@ namespace TourismApiWAD.Models
         
         public int OfferId { get; set; }
         public string Destination { get; set; }
+        public string Image { get; set; }
         
         //public virtual ICollection<Package> Package { get; set; }
 

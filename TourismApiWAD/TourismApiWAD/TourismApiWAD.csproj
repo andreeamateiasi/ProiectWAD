@@ -61,11 +61,17 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -203,13 +209,17 @@
     <Compile Include="Migrations\201705080947516_Initial.Designer.cs">
       <DependentUpon>201705080947516_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705091619065_Initial1.cs" />
-    <Compile Include="Migrations\201705091619065_Initial1.Designer.cs">
-      <DependentUpon>201705091619065_Initial1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201705091620226_Tourism.cs" />
     <Compile Include="Migrations\201705091620226_Tourism.Designer.cs">
       <DependentUpon>201705091620226_Tourism.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705100759107_Initial1.cs" />
+    <Compile Include="Migrations\201705100759107_Initial1.Designer.cs">
+      <DependentUpon>201705100759107_Initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705100759543_Tourism1.cs" />
+    <Compile Include="Migrations\201705100759543_Tourism1.Designer.cs">
+      <DependentUpon>201705100759543_Tourism1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
@@ -296,11 +306,14 @@
     <EmbeddedResource Include="Migrations\201705080947516_Initial.resx">
       <DependentUpon>201705080947516_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705091619065_Initial1.resx">
-      <DependentUpon>201705091619065_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705091620226_Tourism.resx">
       <DependentUpon>201705091620226_Tourism.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705100759107_Initial1.resx">
+      <DependentUpon>201705100759107_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705100759543_Tourism1.resx">
+      <DependentUpon>201705100759543_Tourism1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

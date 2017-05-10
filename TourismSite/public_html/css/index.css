@@ -24,11 +24,10 @@ and open the template in the editor.
     width: 150px;
     height: 75px;
     margin: 0 10% 0 10%;
-    border: 3px solid #73AD21;  
 }
 .ul_offers {
     list-style-type: none;
-
+    display: inline;
 }
 
 #smth{

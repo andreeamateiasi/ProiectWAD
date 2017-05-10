@@ -65,12 +65,44 @@ function MainApp() {
             dataType: "json"
         });
     };
-
     this.setBaseURL = function (strBaseURL) {
         baseURL = strBaseURL;
     };
+
     this.getAllDestinations = function () {
-        var allDestReq = "/api/offer";
+        var allDestReq = "/api/offers";
+        return doAsyncGet(allDestReq);
+    };
+
+
+    this.getOffersInDest = function (destId) {
+        var apiURL = "/api/offers/" + destId + "/packages";
+        return doAsyncGet(apiURL);
+    };
+
+    this.getPriceForPackage = function (packageId) {
+        var apiURL = "/api/packages/" + packageId;
+        return doAsyncGet(apiURL);
+    };
+
+    this.addNewOffer = function (dest) {
+        var postURL = "/api/offers";
+        return doAsyncPost(postURL, dest);
+    };
+    this.deleteOffer = function (offerId)
+    {
+        var postURL = "/api/offers/" + offerId;
+        return doAsyncDelete(postURL);
+    };
+
+    this.updateOffer = function (offerData)
+    {
+        var putUrl = "/api/offers/" + offerData.id;
+        return doAsyncPut(putUrl, offerData);
+    },
+
+    this.getAllDestinations = function () {
+        var allDestReq = "/api/offers";
         return (allDestReq);
     };
     MainApp.instance = this;
