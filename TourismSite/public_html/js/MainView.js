@@ -74,13 +74,18 @@ MainView.prototype = {
                     elem1.className = 'li_offer_ul';
                     elem1.id = this.OfferId;
                     var elem2 = document.createElement("div");
-                    elem2.className = "floating-box";
+                    elem2.className = "div_img_offer";
+                                        elem2.className = "floating-box";
+
                     elem2.style["margin-top"] = "10%";
                     var elem3 = document.createElement("img");
                     elem3.setAttribute('src', this.Image);
                     elem3.setAttribute('width', '275');
                     elem3.setAttribute('height', '175');
+                    elem3.className = "img_class";
                     var elem4 = document.createElement("a");
+                    elem4.className = "container";
+
                     var textElem4 = document.createTextNode(this.Destination);
                     elem4.appendChild(textElem4);
                     // var imgElem3 = document.createTextNode(this.Image);
@@ -119,6 +124,7 @@ MainView.prototype = {
 
         $("#id_for_main").load('offers.html', function () {
             var main = new OffersView();
+            main.onPackagesPopulate(itemId);
         });
 
     },
@@ -199,7 +205,7 @@ MainView.prototype = {
                 break;
             case 'offers':
                 $('#id_for_main').load('html/offers.html', function () {
-                    var offers = new OffersView();
+                    //var offers = new OffersView();
                 });
                 break;
             case 'contact':

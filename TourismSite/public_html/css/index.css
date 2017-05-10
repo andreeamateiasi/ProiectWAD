@@ -48,3 +48,6 @@ body{
     background-position: initial;
 }
 
+.img_class{
+    border-radius: 8px;
+}
