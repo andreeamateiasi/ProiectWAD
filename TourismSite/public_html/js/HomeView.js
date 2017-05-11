@@ -32,7 +32,7 @@ onHomePopulate: function (e) {
             success: function (data) {
                 
                 //("#ul_offer_page").html('');
-                var items = [];
+                //var items = [];
                 $('#ul_offer_page').empty();
 
                 $.each(data, function () {
