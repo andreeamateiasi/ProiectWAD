@@ -91,12 +91,29 @@ body{
 
 .li_dropdown_home{
     -webkit-appearance: none; 
-   -moz-appearance: none;
-   appearance: none;     
+    -moz-appearance: none;
+    appearance: none;     
 }
 body{
     background-image: url('../Photos/work.jpg');
     background-size: 1300px 1300px;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+#button_drop_down_trip{
+    float: left;
+}
+#info_package{
+    float: left;
+    color:#7070db;
+    font-size: x-large;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-weight: bold;
+}
+
+#h2_trip{
+    color:#7070db;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-weight: bold;
 }

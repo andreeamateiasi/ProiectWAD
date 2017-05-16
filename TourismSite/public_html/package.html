@@ -15,29 +15,21 @@
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="0" class="active" id="1"></li>
+                <li data-target="#myCarousel" data-slide-to="1" id="2"></li>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="Photos/tr2.jpg" alt="Chania" width="460" height="345">
+                    <img src="" id="1img"  width="460" height="345">
                 </div>
 
                 <div class="item">
-                    <img src="Photos/tr1.jpg" alt="Chania" width="460" height="345">
+                    <img src="" id="2img" width="460" height="345">
                 </div>
 
-                <div class="item">
-                    <img src="Photos/tr2.jpg" alt="Flower" width="460" height="345">
-                </div>
-
-                <div class="item">
-                    <img src="Photos/tr1.jpg" alt="Flower" width="460" height="345">
-                </div>
+                
             </div>
 
             <!-- Left and right controls -->
@@ -53,37 +45,29 @@
     </div>
 </aside>
 
-<aside>
-    <div class="container">
-        <h2>Trip itinerarium</h2>
-        <form class="form-horizontal">
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hotels
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Neptun</a></li>
-                    <li><a href="#">Dacia</a></li>
-                    <li><a href="#">Royal</a></li>
-                </ul>
-            </div>
 
+    <div class="container">
+        <h2 id="h2_trip">Trip itinerarium</h2>
+        <br/>
+        <br/>
             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Period
+                <button class="btn btn-primary dropdown-toggle btn-md" type="button" data-toggle="dropdown" id="button_drop_down_trip">Trip itinerariums
                     <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li>100$ : 12 june 2017 - 16 june 2017</li>
-                    <li>150$ : 10 july 2017 - 19 july 2017</li>
-                    <li>234$ : 1 august 2017 - 5 august 2017</li>
+                <ul class="dropdown-menu" id="drop_down_trip">
+                    
                 </ul>
             </div>
+<br/>
+<br/>
             <div>
+                <p id="info_package"></p>
             </div>
+            
             <div class="form-group">        
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Book</button>
                 </div>
             </div>
-        </form>
     </div>
 
-</aside>
+

@@ -79,7 +79,7 @@ onHomePopulate: function (e) {
     },
     onOfferLoad: function (event) {
         var itemId = $(event.currentTarget).attr('id');
-
+            console.log("id from home ul "+itemId);
         $("#id_for_main").load('offers.html', function () {
             var offer = new OffersView();
             offer.onPackagesPopulate(itemId);
