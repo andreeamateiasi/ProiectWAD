@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TourismApiWAD.Models;
+using System.Web.Http.Cors;
 
 namespace TourismApiWAD.Controllers
 {
+
     public class UsersController : ApiController
     {
         private TourismApiWADContext db = new TourismApiWADContext();

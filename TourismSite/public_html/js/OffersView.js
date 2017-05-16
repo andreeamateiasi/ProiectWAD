@@ -16,7 +16,7 @@ OffersView.prototype = {
     attachListeners: function () {
         console.log("i got here");
         $('#submit_bttn').on('click', $.proxy(this.onModalWinGetPackage, this));
-       $('#ul_offers_by_id').on('click', 'li', $.proxy(this.onPackageLoad, this));
+        $('#ul_offers_by_id').on('click', 'li', $.proxy(this.onPackageLoad, this));
 
         //$('nav').on('click', '#offers', $.proxy(this.onAllPackagesPopulate, this));
         //$('li').on('click', 'a', $.proxy(this.onMainMenuItemOffer, this));
@@ -24,7 +24,7 @@ OffersView.prototype = {
     },
     onPackageLoad: function (event) {
         var itemId = $(event.currentTarget).attr('id');
-        console.log("here is wrong "+itemId);
+        console.log("here is wrong " + itemId);
         $("#id_for_main").load('package.html', function () {
             var package = new PackageView();
             package.onPackagePagePopulate(itemId);
@@ -42,9 +42,20 @@ OffersView.prototype = {
         var img2 = document.getElementById("img2").value;
 
 // Returns successful data submission message when the entered information is stored in database.
-        var dataString = 'Hotel=' + hotel + 'Food=' + food + 'NoPassengers='
-                + no_pass + 'Price=' + price + 'OfferId' + destId + 'DestinationCity'
-                + dest_city + 'Image1' + img1 + 'Image2' + img2;
+        var obj = {
+            "OfferId": destId,
+            "DestinationCity": dest_city,
+            "Image1": img1,
+            "Image2": img2,
+            "Hotel": hotel,
+            "Food": food,
+            "NoPassengers": no_pass,
+            "Price": price
+        };
+
+        /* 'Hotel=' + hotel + '&Food=' + food + '&NoPassengers='
+         + no_pass + '&Price=' + price + '&OfferId=' + destId + '&DestinationCity='
+         + dest_city + '&Image1=' + img1 + '&Image2=' + img2;*/
         if (hotel == '' || food == '' || no_pass == '' || price == ''
                 || destId == '' || dest_city == '' || img1 == '' || img2 == '') {
             console.log("fill all the fields");
@@ -55,11 +66,13 @@ OffersView.prototype = {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
+
                 },
+               
                 type: "POST",
                 url: "http://localhost:57312/api/packages",
-                data: dataString,
-                //JSON.stringify
+                data: JSON.stringify(obj),
+                
                 dataType: 'json',
                 cache: false,
                 success: function () {
