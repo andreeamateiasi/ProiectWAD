@@ -8,7 +8,7 @@ Register.prototype = {
         this.attachListeners();
     },
     attachListeners: function () {
-        $('#register_button').on('click', $.proxy(this.onKendoWindow, this));
+       // $('#register_button').on('click', $.proxy(this.onKendoWindow, this));
         // $('body').on('click', '.save_info', $.proxy(this.addTo, this));
 
     },
@@ -48,24 +48,7 @@ Register.prototype = {
 //        }
 //    },
 //         
-    onKendoWindow: function () {
-        if ($("#kendo_window").length === 0) {
-            $('.li_kendo').append('<div id="kendo_window"></div>');
-        }
-
-        $("#kendo_window").show().kendoWindow({
-            width: "400px",
-            height: "500px",
-            modal: true,
-            close: function () {
-                $("#kendo_window").data('kendoWindow').destroy();
-            },
-            title: "Form to register.",
-            actions: ["Maximize", "Close"],
-            content: 'formRegister.html'
-        }).data('kendoWindow').center();
-    }
-};
+}
 $(document).ready(function () {
     var register = new Register();
 });

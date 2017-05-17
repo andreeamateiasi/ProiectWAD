@@ -7,8 +7,6 @@ PackageView.prototype = {
         this.attachListeners();
     },
     attachListeners: function () {
-        //$("#datetimepicker1").on('click', $.proxy(this.functionDateTime1, this));
-        // $("#datetimepicker2").on('click', $.proxy(this.functionDateTime2, this));
 
     },
     onDropDownPackagePagePopulate: function (itemId) {
@@ -63,11 +61,20 @@ PackageView.prototype = {
                         var li2 = document.getElementById('2img');
                         li2.src = this.Image2;
                         var elem = document.getElementById('info_package');
-                        
-                        var textElem2 = document.createTextNode("You will be staying at "+this.Hotel
-                                +", meals included: "+this.Food+". This package is for "
-                                +this.NoPassengers+" passengers");
+
+                        var textElem2 = document.createTextNode("You will be staying at " + this.Hotel
+                                + ", meals included: " + this.Food + ". This package is for "
+                                + this.NoPassengers + " passengers");
                         elem.appendChild(textElem2);
+                        var p1 = document.getElementById('location');
+                        var textp1 = document.createTextNode(this.Location);
+                        p1.appendChild(textp1);
+                        var p2 = document.getElementById('facilityHotel');
+                        var textp2 = document.createTextNode(this.HotelFacility);
+                        p2.appendChild(textp2);
+                        var p3 = document.getElementById('facilityRoom');
+                        var textp3 = document.createTextNode(this.RoomFacility);
+                        p3.appendChild(textp3);
                     }
                 });
             },
@@ -79,36 +86,6 @@ PackageView.prototype = {
 
     },
 
-    functionDateTime1: function () {
-
-//        $("#datetimepicker1").kendoDateTimePicker({
-//            value: new Date()
-//        });
-        $("#datetimepicker1").kendoDateTimePicker()
-                .closest(".k-widget")
-                .attr("id", "datetimepicker_wrapper");
-
-        var datetimepicker = $("#datetimepicker1").data("kendoDateTimePicker");
-
-        var setValue = function () {
-            datetimepicker.value($("#value").val());
-        };
-    },
-    functionDateTime2: function () {
-
-//        $("#datetimepicker2").kendoDateTimePicker({
-//            value: new Date()
-//        });
-        $("#datetimepicker2").kendoDateTimePicker()
-                .closest(".k-widget")
-                .attr("id", "datetimepicker_wrapper");
-
-        var datetimepicker = $("#datetimepicker1").data("kendoDateTimePicker");
-
-        var setValue = function () {
-            datetimepicker.value($("#value").val());
-        };
-    }
 };
 
 

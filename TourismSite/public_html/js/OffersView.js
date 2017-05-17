@@ -32,14 +32,16 @@ OffersView.prototype = {
         });
     },
     onModalWinGetPackage: function () {
-        var destId = document.getElementById("dest_id").value;
-        var hotel = document.getElementById("hotel").value;
-        var food = document.getElementById("food").value;
-        var no_pass = document.getElementById("no_pass").value;
-        var price = document.getElementById("price").value;
-        var dest_city = document.getElementById("dest_city").value;
-        var img1 = document.getElementById("img1").value;
-        var img2 = document.getElementById("img2").value;
+         var valid = true, input;
+        
+        var destId = $("#dest_id").val();
+        var hotel = $("#hotel").val();
+        var food = $("#food").val();
+        var no_pass = $("#no_pass").val();
+        var price = $("#price").val();
+        var dest_city = $("#dest_city").val();
+        var img1 = $("#img1").val();
+        var img2 = $("#img2").val();
 
 // Returns successful data submission message when the entered information is stored in database.
         var obj = {
@@ -65,15 +67,17 @@ OffersView.prototype = {
             $.ajax({
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                            // 'Origin':  'http://localhost:57312/api/packages/post'
 
                 },
-               
+               crossOrigin: true,
                 type: "POST",
                 url: "http://localhost:57312/api/packages",
                 data: JSON.stringify(obj),
                 
                 dataType: 'json',
+                crossDomain: true,
                 cache: false,
                 success: function () {
                     console.log('added succesfully');

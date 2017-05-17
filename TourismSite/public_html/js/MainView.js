@@ -9,6 +9,7 @@ MainView.prototype = {
         this.attachListeners();
         // this.onMainMenuItem();
         this.onNavItem();
+        var verify = new Verify();
 
     },
     attachListeners: function () {
@@ -51,10 +52,10 @@ MainView.prototype = {
                 $('#id_for_main').load('contact.html');
                 break;
             case 'reg':
-                window.location.href = "login/login.html";
+                window.location.href = "login.html";
                 break;
             case 'login':
-                window.location.href = "login/login.html";
+                window.location.href = "login.html";
                 break;
         }
     }

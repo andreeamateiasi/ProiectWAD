@@ -217,9 +217,13 @@
     <Compile Include="Migrations\201705100759107_Initial1.Designer.cs">
       <DependentUpon>201705100759107_Initial1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705100759543_Tourism1.cs" />
-    <Compile Include="Migrations\201705100759543_Tourism1.Designer.cs">
-      <DependentUpon>201705100759543_Tourism1.cs</DependentUpon>
+    <Compile Include="Migrations\201705170734559_Initial2.cs" />
+    <Compile Include="Migrations\201705170734559_Initial2.Designer.cs">
+      <DependentUpon>201705170734559_Initial2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705170735588_TourismSite.cs" />
+    <Compile Include="Migrations\201705170735588_TourismSite.Designer.cs">
+      <DependentUpon>201705170735588_TourismSite.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
@@ -312,8 +316,11 @@
     <EmbeddedResource Include="Migrations\201705100759107_Initial1.resx">
       <DependentUpon>201705100759107_Initial1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705100759543_Tourism1.resx">
-      <DependentUpon>201705100759543_Tourism1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705170734559_Initial2.resx">
+      <DependentUpon>201705170734559_Initial2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705170735588_TourismSite.resx">
+      <DependentUpon>201705170735588_TourismSite.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

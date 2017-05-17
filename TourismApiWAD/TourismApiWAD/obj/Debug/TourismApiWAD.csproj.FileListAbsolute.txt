@@ -161,4 +161,5 @@ C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\bin\Syst
 C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\bin\System.Web.Http.Cors.xml
 C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.csprojResolveAssemblyReference.cache
 C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.Migrations.Initial1.resources
-C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.Migrations.Tourism1.resources
+C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.Migrations.Initial2.resources
+C:\Users\Lucian\Documents\GitHub\ProiectWAD\TourismApiWAD\TourismApiWAD\obj\Debug\TourismApiWAD.Migrations.TourismSite.resources

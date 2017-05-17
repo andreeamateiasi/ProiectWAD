@@ -117,3 +117,10 @@ body{
     font-family: "Times New Roman", Georgia, Serif;
     font-weight: bold;
 }
+.p_class{
+     float: left;
+    color:#7070db;
+    font-size: x-large;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-weight: bold;
+}
