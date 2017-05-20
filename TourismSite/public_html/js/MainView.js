@@ -8,7 +8,7 @@ MainView.prototype = {
 
         this.attachListeners();
         // this.onMainMenuItem();
-        this.onNavItem();
+       // this.onNavItem();
         var verify = new Verify();
 
     },

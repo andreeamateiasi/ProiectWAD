@@ -37,6 +37,21 @@ namespace TourismApiWAD.Controllers
             return Ok(user);
         }
 
+        [Route("api/users/{username}")]
+        [ResponseType(typeof(Package))]
+        public IHttpActionResult GetUserByUsername(string username)
+        {
+            IEnumerable<User> user = db.User.Where(pk => pk.UserNane == username);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+
+
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)

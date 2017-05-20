@@ -7,6 +7,7 @@ OffersView.prototype = {
     initComponent: function () {
         this.attachListeners();
         this.onModalWinGetPackage();
+        this.ftc();
         //this.onPackageLoad();
 
         //this.onMainMenuItemOffer();
@@ -31,10 +32,28 @@ OffersView.prototype = {
             package.onDropDownPackagePagePopulate(itemId);
         });
     },
+    ftc: function(dest, id){
+        $.ajax({
+                type: "GET",
+                url: "http://localhost:57312/api/offers/"+dest,                
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data, function () {
+                      //id = this.OfferId;
+                    });
+                           //id  = data[0].OfferId;                       
+                 
+                },
+                fail: function () {
+                    console.log('failed');
+                }
+
+            });
+    },
     onModalWinGetPackage: function () {
          var valid = true, input;
-        
-        var destId = $("#dest_id").val();
+         var offerId;
+        var dest = $("#dest_country").val();
         var hotel = $("#hotel").val();
         var food = $("#food").val();
         var no_pass = $("#no_pass").val();
@@ -42,10 +61,12 @@ OffersView.prototype = {
         var dest_city = $("#dest_city").val();
         var img1 = $("#img1").val();
         var img2 = $("#img2").val();
-
+       
 // Returns successful data submission message when the entered information is stored in database.
-        var obj = {
-            "OfferId": destId,
+        
+            this.ftc(dest, offerId);
+            var obj = {
+            "OfferId": offerId,
             "DestinationCity": dest_city,
             "Image1": img1,
             "Image2": img2,
@@ -54,12 +75,11 @@ OffersView.prototype = {
             "NoPassengers": no_pass,
             "Price": price
         };
-
         /* 'Hotel=' + hotel + '&Food=' + food + '&NoPassengers='
          + no_pass + '&Price=' + price + '&OfferId=' + destId + '&DestinationCity='
          + dest_city + '&Image1=' + img1 + '&Image2=' + img2;*/
         if (hotel == '' || food == '' || no_pass == '' || price == ''
-                || destId == '' || dest_city == '' || img1 == '' || img2 == '') {
+                || dest == '' || dest_city == '' || img1 == '' || img2 == '') {
             console.log("fill all the fields");
             //alert("Please Fill All Fields");
         } else {
@@ -67,8 +87,7 @@ OffersView.prototype = {
             $.ajax({
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                            // 'Origin':  'http://localhost:57312/api/packages/post'
+                    'Content-Type': 'application/json'
 
                 },
                crossOrigin: true,
@@ -78,7 +97,6 @@ OffersView.prototype = {
                 
                 dataType: 'json',
                 crossDomain: true,
-                cache: false,
                 success: function () {
                     console.log('added succesfully');
                 },

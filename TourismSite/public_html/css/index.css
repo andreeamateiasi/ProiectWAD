@@ -106,21 +106,27 @@ body{
 }
 #info_package{
     float: left;
-    color:#7070db;
-    font-size: x-large;
+    color:vlack;
+    font-size: large;
     font-family: "Times New Roman", Georgia, Serif;
-    font-weight: bold;
 }
 
 #h2_trip{
-    color:#7070db;
+    color:black;
     font-family: "Times New Roman", Georgia, Serif;
-    font-weight: bold;
+
 }
 .p_class{
      float: left;
-    color:#7070db;
-    font-size: x-large;
+    color:black;
+    font-size: large;
     font-family: "Times New Roman", Georgia, Serif;
-    font-weight: bold;
+}
+.div_info_package{
+    height: 200px;
+    width: 80%;
+    background-color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
 }

@@ -37,6 +37,19 @@ namespace TourismApiWAD.Controllers
             return Ok(tripItinerarium);
         }
 
+        [HttpGet]        
+        [ResponseType(typeof(TripItinerarium))]
+        [Route("api/tripitinerariums/package/{id}")]
+        public IHttpActionResult GetPackage(int id)
+        {
+            IEnumerable<TripItinerarium> tripItinerariums = db.TripItinerarium.Where(it => it.PackageId == id);
+            if (tripItinerariums == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(tripItinerariums);
+        }
         // PUT: api/TripItinerariums/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutTripItinerarium(int id, TripItinerarium tripItinerarium)

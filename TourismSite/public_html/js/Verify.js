@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-
+/*
 function Verify() {
     if (window.localStorage.getItem("sessionToken")) {
         console.log(window.localStorage.getItem("username"));
@@ -32,4 +32,4 @@ function Verify() {
         window.location.href = "../login.html";
     }
 
-}
+}*/

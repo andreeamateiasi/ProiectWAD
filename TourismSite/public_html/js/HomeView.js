@@ -13,15 +13,53 @@ HomeView.prototype = {
        
         this.onDropDownPopulate();
         this.onHomePopulate();
-        this.onOfferLoad();
+                // this.onOfferLoad();
     },
     attachListeners: function () {
         $('#smth').on('click', 'button', $.proxy(this.onDropDownPopulate, this));
         $('nav').on('click', '#home', $.proxy(this.onHomePopulate, this));
         $('#ul_offer_page').on('click', 'li', $.proxy(this.onOfferLoad, this));
+        $('#submit_bttn_home').on('click', $.proxy(this.onSubmitOffer, this));
     },
 
+onSubmitOffer: function() {
+    
+    
+    var destination = $('#imputDestOffer').val();
+    var image = $('#imputImageOffer').val();
+    
+    var obj ={ "Destination": destination, "Image": image};
+     if (destination == "" || image == "") {
+            console.log("fill all the fields for offer to be added");
+            //alert("Please Fill All Fields");
+        } else {
+// AJAX code to submit form.
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "POST",
+                url: "http://localhost:57312/api/offers",
+                data: JSON.stringify(obj),
+                crossOrigin: true,
+                dataType: 'json',
+                crossDomain: true,
+                success: function () {
+                    console.log('offer added succesfully');
+                },
+                fail: function () {
+                    console.log('failed to add offer');
+                }
 
+            });
+        }
+        $('#message_to_be_shown').append("<p>Offer added succesfully</p>");
+         $('#imputDestOffer').val('');
+        $('#imputImageOffer').val('');
+       
+        return false;
+},
 onHomePopulate: function (e) {
 
         $.ajax({

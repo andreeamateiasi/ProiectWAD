@@ -41,26 +41,27 @@ Login.prototype = {
     onLogin: function () {
         this.onInputBlur();
         $('#notification_li').empty();
-
+        
+        var username = $("#username").val();
+        var password = $("#password").val();
         if ($("#alert_icon_username").hasClass('hide') && $("#alert_icon_password").hasClass('hide'))
 
         {
             
-            var username = $("#username").val();
-            var password = $("#password").val();
+            
 //            var user = {
 //              username:  username,
 //              password: password
 //            };
             $.ajax({
                 type: "GET",
-                url: "http://localhost:57312/api/users",
+                url: "http://localhost:57312/api/users/"+username,
                 dataType: "json",
                 crossDomain: true,
                 success: function (data) {
-
+                        console.log(this.password);
                     $.each((data), function () {
-                        if (username == this.UserNane && password == this.password) {
+                        if (password == this.password) {
                             console.log("found" + username + " " + password);
                             console.log(this.user);
                             window.location.href = "index.html";

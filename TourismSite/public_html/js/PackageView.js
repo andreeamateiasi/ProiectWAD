@@ -5,33 +5,79 @@ PackageView = function () {
 PackageView.prototype = {
     initComponent: function () {
         this.attachListeners();
+        this.bookPackage();
     },
     attachListeners: function () {
 
     },
+    bookPackage: function(){
+        
+        var userId;//get from token
+        var tripItinerariumId;//get from dropdown
+        
+        var obj = {"UserId": userId, "TripItinerariumId": tripItinerariumId };
+        
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:57312/api/books",
+            data: JSON.stringify(obj),
+            dataType: 'json',
+            crossDomain: true,
+            success: function () {
+                console.log('book made  succesfully');
+            },
+            fail: function () {
+                console.log('failed to book the package');
+            }
+
+        });
+        
+    },
     onDropDownPackagePagePopulate: function (itemId) {
         $.ajax({
             type: "GET",
-            url: "http://localhost:57312/api/tripitinerariums",
+            url: "http://localhost:57312/api/tripitinerariums/package/"+itemId,
             dataType: "json",
             crossDomain: true,
             success: function (data) {
 
                 $.each((data), function () {
                     //$('#dropDownHome').append($("<li></li>").val(this['Destination']).html(this['Destination']));
-                    if (itemId == this.PackageId) {
+                   // if (itemId == this.PackageId) {
                         console.log("trip it id for package" + itemId);
-                        var elem1 = document.createElement("li");
-                        elem1.className = 'li_dropdown_home';
-                        elem1.id = this.PackageId;
-
-                        var textElem2 = document.createTextNode(this.Plane + " - " + this.Start + " to " + this.Finish + " - " + this.Price);
-                        elem1.appendChild(textElem2);
-
-                        var element = document.getElementById("drop_down_trip");
-                        element.appendChild(elem1);
+//                        var elem1 = document.createElement("li");
+//                        elem1.className = 'li_dropdown_home';
+//                        elem1.id = this.PackageId;
+//
+//                        var textElem2 = document.createTextNode(this.Plane + " - " + this.Start + " to " + this.Finish + " - " + this.Price);
+//                        elem1.appendChild(textElem2);
+//
+//                        var element = document.getElementById("drop_down_trip");
+//                        element.appendChild(elem1);
+//                        
+//                        
+//                            
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        var td2 = document.createElement("td");
+                        var td3 = document.createElement("td");
+                        var td4 = document.createElement("td");
+                        var plane = document.createTextNode(this.Plane);
+                        var start = document.createTextNode(this.Start);
+                        var finish = document.createTextNode(this.Finish);
+                        var price = document.createTextNode(this.Price);
+                        td1.appendChild(plane);
+                        td2.appendChild(start);
+                        td3.appendChild(finish);
+                        td4.appendChild(price);
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        tr.appendChild(td4);
+                        var element = document.getElementById("table_package_info_page");
+                        element.appendChild(tr);
                         //li_dropdown_home
-                    }
+                   // }
                 });
             },
             failure: function (response) {

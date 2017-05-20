@@ -24,6 +24,24 @@ namespace TourismApiWAD.Controllers
             return db.Offer;
         }
 
+
+
+        [Route("api/offers/{country}")]
+        [ResponseType(typeof(Offer))]
+        public IHttpActionResult GetOfferByDest(string country)
+        {
+            IEnumerable<Offer> offer = db.Offer.Where(pk => pk.Destination == country);
+            if (offer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(offer);
+        }
+
+
+
+
         // GET: api/Offers/5
         [ResponseType(typeof(Offer))]
         public IHttpActionResult GetOffer(int id)

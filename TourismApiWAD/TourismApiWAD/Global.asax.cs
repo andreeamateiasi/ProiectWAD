@@ -11,10 +11,24 @@ namespace TourismApiWAD
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        public WebApiApplication()
+        {
+            this.BeginRequest += WebApiApplication_BeginRequest;
+        }
+
+        private void WebApiApplication_BeginRequest(object sender, EventArgs e)
+        {
+            if (this.Context.Request.HttpMethod.CompareTo("OPTIONS") == 0)
+            {
+                this.Context.Response.StatusCode = 200;
+                this.CompleteRequest();
+            }
+        }
+
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            AreaRegistration.RegisterAllAreas();            
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

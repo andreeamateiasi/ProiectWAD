@@ -36,6 +36,19 @@ namespace TourismApiWAD.Controllers
             return Ok(package);
         }
 
+        [Route("api/packages/offer/{id}")]
+        [ResponseType(typeof(Package))]
+        public IHttpActionResult GetPackageByOffer(int id)
+        {
+            IEnumerable<Package> packages = db.Package.Where(pk => pk.OfferId == id);
+            if (packages == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(packages);
+        }
+
         // PUT: api/Packages/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPackage(int id, Package package)
