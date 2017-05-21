@@ -13,14 +13,14 @@ function Verify() {
         query.find({
             success: $.proxy(function (results) {
                 window.localStorage.setItem('userId', results[0].id);
-                if(!window.localStorage.getItem('userPhoto'))
-                if (results[0].get('image'))
-                {
-                    window.localStorage.setItem('userPhoto', results[0].get('image').url());
-                }
-                else {
-                    window.localStorage.setItem('userPhoto', 'images/no-profile-photo.jpg');
-                }
+                //if(!window.localStorage.getItem('userPhoto'))
+               // if (results[0].get('image'))
+               // {
+               //     window.localStorage.setItem('userPhoto', results[0].get('image').url());
+                //}
+               // else {
+                //    window.localStorage.setItem('userPhoto', 'images/no-profile-photo.jpg');
+               // }
             }, this),
             error: function (error) {
                 alert("Error: " + error.code + " " + error.message);
@@ -29,7 +29,7 @@ function Verify() {
     }
     else
     {
-        window.location.href = "../login.html";
+        //window.location.href = "../login.html";
     }
 
 }*/

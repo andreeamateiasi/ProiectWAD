@@ -117,7 +117,7 @@ body{
 
 }
 .p_class{
-     float: left;
+    float: left;
     color:black;
     font-size: large;
     font-family: "Times New Roman", Georgia, Serif;
@@ -129,4 +129,14 @@ body{
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 3%;
+}
+.display_class{
+
+    visibility: hidden;
+    display: none;
+}
+.display_button{
+    background: transparent;
+    border: none !important;
+    font-size:0;
 }

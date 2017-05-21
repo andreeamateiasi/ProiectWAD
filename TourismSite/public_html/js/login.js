@@ -6,7 +6,7 @@ Login.prototype = {
     init: function () {
 
         this.attachListeners();
-        this.initKendoComponents();
+       // this.initKendoComponents();
         this.initFacebook();
     },
     attachListeners: function () {
@@ -18,10 +18,11 @@ Login.prototype = {
                 $('#login_button').trigger('click');
             }
         });
+        $('#go_back').on('click', function(){
+            window.location.href = "index.html";
+        });
     },
-    initKendoComponents: function () {
-
-    },
+  
     onInputBlur: function (event) {
         if ($("#username").val().length === 0)
         {
@@ -47,12 +48,8 @@ Login.prototype = {
         if ($("#alert_icon_username").hasClass('hide') && $("#alert_icon_password").hasClass('hide'))
 
         {
-            
-            
-//            var user = {
-//              username:  username,
-//              password: password
-//            };
+        var user = {'username': username, 'password': password };
+
             $.ajax({
                 type: "GET",
                 url: "http://localhost:57312/api/users/"+username,
@@ -62,11 +59,18 @@ Login.prototype = {
                         console.log(this.password);
                     $.each((data), function () {
                         if (password == this.password) {
+                            var currentUser = data[0];
                             console.log("found" + username + " " + password);
                             console.log(this.user);
                             window.location.href = "index.html";
-                            window.localStorage.setItem('sessionToken', this.current()._sessionToken);
-                            window.localStorage.setItem('username', username);
+                            window.localStorage.setItem('sessionToken', currentUser._sessionToken);
+                            window.localStorage.setItem('username', this.UserNane);
+                            window.localStorage.setItem('userType', this.userType);
+                            
+                            
+                            //window.localStorage.setItem('sessionToken', currentUser);
+                            //window.localStorage.setItem('username', username);
+                           //var here = window.localStorage.getItem('username');
                         }
                     });
                 },

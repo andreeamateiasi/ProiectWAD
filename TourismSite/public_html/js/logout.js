@@ -9,14 +9,17 @@ Logout.prototype = {
         this.attachListeners();
     },
     attachListeners: function () {
-        $('#log_out').on('click', $.proxy(this.onLogOut, this));
+        $('#bttn2').on('click', $.proxy(this.onLogOut, this));
     },
     onLogOut: function (event) {
         event.preventDefault();
         
-        console.log(currentUser);
+       // console.log(currentUser);
+        //localStorage.removeItem('sessionToken');
+        localStorage.removeItem('username');
+        localStorage.removeItem('userType');
         localStorage.clear();
-        window.location.href = "login/login.html";
+        window.location.href = "../index.html";
     }
 };
 

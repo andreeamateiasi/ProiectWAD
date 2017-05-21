@@ -14,6 +14,9 @@ HomeView.prototype = {
         this.onDropDownPopulate();
         this.onHomePopulate();
                 // this.onOfferLoad();
+        this.verifyUserType();
+        this.onChangeButtons();
+        this.onHideDropDown();
     },
     attachListeners: function () {
         $('#smth').on('click', 'button', $.proxy(this.onDropDownPopulate, this));
@@ -21,7 +24,51 @@ HomeView.prototype = {
         $('#ul_offer_page').on('click', 'li', $.proxy(this.onOfferLoad, this));
         $('#submit_bttn_home').on('click', $.proxy(this.onSubmitOffer, this));
     },
-
+verifyUserType: function(){
+    var user = window.localStorage.getItem('userType');
+    return user;
+},
+onHideDropDown: function(){
+    var userType = this.verifyUserType();
+    
+    if(userType == 'admin'){
+        //$('#div_for_add_offer_bttn').val('<button type="button" id="button_add_offer" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">Add Offer</button>');
+        var bttn = document.createElement('button');
+        bttn.id = 'button_add_offer'; 
+        bttn.className = 'btn btn-info btn-lg';
+        bttn.setAttribute('data-toggle','modal');
+        bttn.setAttribute('data-target', "#myModal");
+        var text = document.createTextNode('Add offer');
+        bttn.appendChild(text);  
+        var e = document.getElementById('div_for_add_offer_bttn');
+        e.appendChild(bttn);
+    }
+      
+},
+onChangeButtons: function(){
+    var user = window.localStorage.getItem('userType');
+    if(user == 'admin' || user == 'user'){
+        $('#bttn1').removeClass('display_class');
+        $('#bttn2').removeClass('display_class');
+        //$('#log_out_bttn').append('Log out');
+        //$('#bttn3').addClass('display_class');
+      // $('#bttn4').addClass('display_class');
+    }
+    if(user == undefined){
+      // $('#register_bttn').append('Register');
+        
+       // $('#log_in_bttn').append('Log in');
+       $('#bttn3').removeClass('display_class');
+        $('#bttn4').removeClass('display_class');
+        $('#bttn1').addClass('display_class');
+       $('#bttn2').addClass('class');
+    }
+    
+    
+    
+    
+// /                       
+},
 onSubmitOffer: function() {
     
     

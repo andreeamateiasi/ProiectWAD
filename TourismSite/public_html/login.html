@@ -41,7 +41,7 @@ and open the template in the editor.
                             <input type="password" id="password" required /> <span title="Invalid Password" class="alert-icon hide" id="alert_icon_password"> </span>
                         </li>
                         <li id="notification_li"></li>
-                            
+
                         <li class="li_kendo" id="li_bttn_log_reg">
                             <button type="button" id="login_button" class="btn btn-info btn-lg" >Log in</button>
 
@@ -64,37 +64,40 @@ and open the template in the editor.
                                             <form id="register_form">
                                                 <label for='userName'>User name:</label>
                                                 <input type='text' name='name' id='userName' required >
-
+                                                <p id='not1'></p>
                                                 <label for='firstName'>First name:</label>
                                                 <input type='text' name='name' id='firstName' required >
-
+                                                <p id='not2'></p>
                                                 <label for='lastName'>Last name:</label>
                                                 <input type='text' name='name' id='lastName' required >
-
+                                                <p id='not3'></p>
                                                 <label for='email'>Email:</label>
                                                 <input type='text' name='email' id='email' required>
-
+                                                <p id='not4'></p>
                                                 <label for='email'>Phone number:</label>
                                                 <input type='text' name='phone' id='phone' required>
-
+                                                <p id='not5'></p>
                                                 <label for='passwordForm'>Password:</label>
                                                 <input type='password' name='password' id='passwordForm' required>
-
+                                                
                                                 <label for='confirmPassword'>Confirm password:</label>
                                                 <input type='password' name='passw' id='confirmPassword' required>
-
+                                                <p id='not6'></p>
 
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-default" data-dismiss="modal" id="submit_bttn">Submit</button>
+                                            <button type="submit" class="btn btn-default"  id="submit_bttn">Submit</button>
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                             <div id="kendo_window"></div>
+                            <a href='#' id='forgot_pass'> Forgot my password.</a>
+                            <a href='#' id='go_back'>Go back to site</a>
                         </li>
                     </ul>
                 </form>
@@ -118,5 +121,7 @@ and open the template in the editor.
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="js/login.js"></script>
         <script src="js/register.js"></script>
+        <script src='js/logout.js'></script>
+
     </body>
 </html>

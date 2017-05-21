@@ -9,7 +9,7 @@ MainView.prototype = {
         this.attachListeners();
         // this.onMainMenuItem();
        // this.onNavItem();
-        var verify = new Verify();
+        //var verify = new Verify();
 
     },
     attachListeners: function () {
@@ -51,12 +51,26 @@ MainView.prototype = {
             case 'contact':
                 $('#id_for_main').load('contact.html');
                 break;
-            case 'reg':
+            case 'bttn1':{
+                var user = window.localStorage.getItem('userType');
+                    $('#id_for_main').load('myProfile.html', function () {
+                        var myProfile = new MyProfile();
+                });
+                //    window.location.href = "login.html";
+                break;
+            }
+            case 'bttn2':
+                var logOut = new Logout();
                 window.location.href = "login.html";
                 break;
-            case 'login':
+
+            case 'bttn3':
                 window.location.href = "login.html";
                 break;
+            case 'bttn4':
+                window.location.href = "login.html";
+                break;
+            
         }
     }
 };
