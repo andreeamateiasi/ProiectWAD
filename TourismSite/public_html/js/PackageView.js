@@ -5,28 +5,110 @@ PackageView = function () {
 PackageView.prototype = {
     initComponent: function () {
         this.attachListeners();
-        this.bookPackage();
+        //this.bookPackage();
+        this.onHideButtonAddTrip();
     },
     attachListeners: function () {
+        $('#submit_bttn').on('click', $.proxy(this.onSubmitTrip, this));
+        $('#book_bttn').on('click', $.proxy(this.bookPackage, this));
+        $('table').on('click', 'tr', $.proxy(this.onTableSelect, this));
 
     },
+    onTableSelect: function(e){
+      var tripId = $(e.currentTarget).attr('id');
+      window.localStorage.setItem('idTrip', tripId );
+      $(tripId).addClass('class_for_table');
+     // return tripId;
+    },
+     verifyUserType: function () {
+        var user = window.localStorage.getItem('userType');
+        return user;
+    },
+    onHideButtonAddTrip: function () {
+        var userType = this.verifyUserType();
+
+        if (userType == 'admin') {
+            //$('#div_for_add_offer_bttn').val('<button type="button" id="button_add_offer" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">Add Offer</button>');
+            var bttn = document.createElement('button');
+            bttn.id = 'button_add_package';
+            bttn.className = 'btn btn-info btn-lg';
+            bttn.setAttribute('data-toggle', 'modal');
+            bttn.setAttribute('data-target', "#myModal");
+            var text = document.createTextNode('Add trip itinerarium');
+            bttn.appendChild(text);
+            var e = document.getElementById('div_for_add_trip_bttn');
+            e.appendChild(bttn);
+        }
+
+    },
+    onSubmitTrip: function () {
+
+        var id = $('#package_id').val();
+        var plane = $('#plane_trip_add').val();
+        var departureDate = $('#departure_date').val();
+        var returnDate =$('#return_date').val();
+        var price = $('#price_add_trip').val();
+        
+        var obj = {"PackageId": id,"Plane": plane, "Start": departureDate, "Finish": returnDate, "Price": price};
+        
+        if (plane == "" || departureDate == "" || returnDate == '' || id == '' || price == '') {
+            console.log("fill all the fields for trip to be added");
+            //alert("Please Fill All Fields");
+        } else {
+// AJAX code to submit form.
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "POST",
+                url: "http://localhost:57312/api/tripItinerariums",
+                data: JSON.stringify(obj),
+                crossOrigin: true,
+                dataType: 'json',
+                crossDomain: true,
+                success: function () {
+                    console.log('offer added succesfully');
+                },
+                fail: function () {
+                    console.log('failed to add offer');
+                }
+
+            });
+        }
+        $('#message_to_be_shown').append("<p>Offer added succesfully</p>");
+        $('#package_id').val('');
+        $('#plane_trip_add').val('');
+        $('#departure_date').val('');
+        $('#return_date').val('');
+        $('#price_add_trip').val('');
+
+        return false;
+    },
     bookPackage: function(){
-        
-        var userId;//get from token
-        var tripItinerariumId;//get from dropdown
-        
-        var obj = {"UserId": userId, "TripItinerariumId": tripItinerariumId };
+        //window.localStorage.setItem('userId', this.UserId);
+        var userId = window.localStorage.getItem('userId');//get from token
+       // var tripItinerariumId = this.onTableSelect();//get from dropdown
+        var tripId = window.localStorage.getItem('idTrip');
+        var obj = {"UserId": userId, "TripItinerariumId": tripId };
         
         $.ajax({
+            headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
             type: "POST",
             url: "http://localhost:57312/api/books",
             data: JSON.stringify(obj),
             dataType: 'json',
             crossDomain: true,
             success: function () {
+                $('#notif').append("<div id='notif_book_success' class='alert alert-success'><strong>Success!</strong> Package booked successfully</div>");
+                
                 console.log('book made  succesfully');
             },
             fail: function () {
+                $('#notif').append("<div id='notif_book_error' class='alert alert-warning'><strong>Warning!</strong> Package not booked.</div>");
                 console.log('failed to book the package');
             }
 
@@ -58,6 +140,7 @@ PackageView.prototype = {
 //                        
 //                            
                         var tr = document.createElement("tr");
+                        tr.id = this.TripItinerariumId;
                         var td1 = document.createElement("td");
                         var td2 = document.createElement("td");
                         var td3 = document.createElement("td");
@@ -85,8 +168,7 @@ PackageView.prototype = {
             }
 
         });
-        $('#dropDownHome').empty();
-
+       
     },
     onPackagePagePopulate: function (itemId) {
         $.ajax({
@@ -130,7 +212,7 @@ PackageView.prototype = {
         });
 
 
-    },
+    }
 
 };
 

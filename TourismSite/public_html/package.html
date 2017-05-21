@@ -1,4 +1,15 @@
-
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Be a tourist!</title>
+<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css"/>
+<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.css"/>
+<link rel="stylesheet" href="lib/jsgrid/jsgrid.css"/> 
+<link rel="stylesheet" href="lib/jsgrid/jsgrid-theme.css"/>  
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/package.css">
 <style>
     .carousel-inner > .item > img,
     .carousel-inner > .item > a > img {
@@ -8,6 +19,57 @@
 </style>
 
 
+<div id='div_for_add_trip_bttn'></div>
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Trip itinerarium</button>-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add package</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <form>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Package id</label>
+                        <input type="text" class="form-control" id="package_id" placeholder="id">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Plane</label>
+                        <input type="text" class="form-control" id="plane_trip_add" placeholder="Plane">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Departure date</label>
+                        <input type="text" class="form-control" id="departure_date" placeholder="20-11-2017">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Return date</label>
+                        <input type="text" class="form-control" id="return_date" placeholder="30-11-2017">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Price</label>
+                        <input type="text" class="form-control" id="price_add_trip" placeholder="200">
+                    </div>
+
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default" data-dismiss="modal" id="submit_bttn">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <aside>
     <div class="container">
@@ -63,19 +125,19 @@
     </div>
     <br/>
     <br/>
-<!--    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle btn-md" type="button" data-toggle="dropdown" id="button_drop_down_trip">Trip itinerariums
-            <span class="caret"></span></button>
-        <ul class="dropdown-menu" id="drop_down_trip">
-
-        </ul>
-    </div>-->
+    <!--    <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle btn-md" type="button" data-toggle="dropdown" id="button_drop_down_trip">Trip itinerariums
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu" id="drop_down_trip">
+    
+            </ul>
+        </div>-->
 
 
 
 
     <div class="container">
- 
+
         <p class='p_class'>Choose the most apropriate period for your vacation!</p>            
         <table class="table table-hover">
             <thead>
@@ -87,22 +149,20 @@
                 </tr>
             </thead>
             <tbody id='table_package_info_page'>
-                
-               
+
+
             </tbody>
         </table>
     </div>
-
-
-
+    <br/>
+    <div id='notif'></div>
 
 
     <br/>
-    <br/>
-    
+
     <div class="form-group">        
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Book</button>
+            <button type="submit" class="btn btn-default" id='book_bttn'>Book</button>
         </div>
     </div>
 </div>

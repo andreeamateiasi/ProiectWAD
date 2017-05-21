@@ -66,7 +66,7 @@ Login.prototype = {
                             window.localStorage.setItem('sessionToken', currentUser._sessionToken);
                             window.localStorage.setItem('username', this.UserNane);
                             window.localStorage.setItem('userType', this.userType);
-                            
+                            window.localStorage.setItem('userId', this.UserId);
                             
                             //window.localStorage.setItem('sessionToken', currentUser);
                             //window.localStorage.setItem('username', username);

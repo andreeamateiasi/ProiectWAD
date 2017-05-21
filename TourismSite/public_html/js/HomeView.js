@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-HomeView = function(){
+HomeView = function () {
     this.initComponent();
 };
 HomeView.prototype = {
-     initComponent: function () {
+    initComponent: function () {
 
         this.attachListeners();
-       
+
         this.onDropDownPopulate();
         this.onHomePopulate();
-                // this.onOfferLoad();
+        // this.onOfferLoad();
         this.verifyUserType();
         this.onChangeButtons();
         this.onHideDropDown();
@@ -23,60 +23,65 @@ HomeView.prototype = {
         $('nav').on('click', '#home', $.proxy(this.onHomePopulate, this));
         $('#ul_offer_page').on('click', 'li', $.proxy(this.onOfferLoad, this));
         $('#submit_bttn_home').on('click', $.proxy(this.onSubmitOffer, this));
+        $('#smth').on('click', 'li', $.proxy(this.onOfferLoad, this));
     },
-verifyUserType: function(){
-    var user = window.localStorage.getItem('userType');
-    return user;
-},
-onHideDropDown: function(){
-    var userType = this.verifyUserType();
-    
-    if(userType == 'admin'){
-        //$('#div_for_add_offer_bttn').val('<button type="button" id="button_add_offer" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">Add Offer</button>');
-        var bttn = document.createElement('button');
-        bttn.id = 'button_add_offer'; 
-        bttn.className = 'btn btn-info btn-lg';
-        bttn.setAttribute('data-toggle','modal');
-        bttn.setAttribute('data-target', "#myModal");
-        var text = document.createTextNode('Add offer');
-        bttn.appendChild(text);  
-        var e = document.getElementById('div_for_add_offer_bttn');
-        e.appendChild(bttn);
-    }
-      
-},
-onChangeButtons: function(){
-    var user = window.localStorage.getItem('userType');
-    if(user == 'admin' || user == 'user'){
-        $('#bttn1').removeClass('display_class');
-        $('#bttn2').removeClass('display_class');
-        //$('#log_out_bttn').append('Log out');
-        //$('#bttn3').addClass('display_class');
-      // $('#bttn4').addClass('display_class');
-    }
-    if(user == undefined){
-      // $('#register_bttn').append('Register');
-        
-       // $('#log_in_bttn').append('Log in');
-       $('#bttn3').removeClass('display_class');
-        $('#bttn4').removeClass('display_class');
-        $('#bttn1').addClass('display_class');
-       $('#bttn2').addClass('class');
-    }
-    
-    
-    
-    
+//    onDropDownSelect: function (e) {
+//        var itemId = $(e.currentTarget).attr('id');
+//        
+//    },
+    verifyUserType: function () {
+        var user = window.localStorage.getItem('userType');
+        return user;
+    },
+    onHideDropDown: function () {
+        var userType = this.verifyUserType();
+
+        if (userType == 'admin') {
+            //$('#div_for_add_offer_bttn').val('<button type="button" id="button_add_offer" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">Add Offer</button>');
+            var bttn = document.createElement('button');
+            bttn.id = 'button_add_offer';
+            bttn.className = 'btn btn-info btn-lg';
+            bttn.setAttribute('data-toggle', 'modal');
+            bttn.setAttribute('data-target', "#myModal");
+            var text = document.createTextNode('Add offer');
+            bttn.appendChild(text);
+            var e = document.getElementById('div_for_add_offer_bttn');
+            e.appendChild(bttn);
+        }
+
+    },
+    onChangeButtons: function () {
+        var user = window.localStorage.getItem('userType');
+        if (user == 'admin' || user == 'user') {
+            $('#bttn1').removeClass('display_class');
+            $('#bttn2').removeClass('display_class');
+            //$('#log_out_bttn').append('Log out');
+            //$('#bttn3').addClass('display_class');
+            // $('#bttn4').addClass('display_class');
+        }
+        if (user == undefined) {
+            // $('#register_bttn').append('Register');
+
+            // $('#log_in_bttn').append('Log in');
+            $('#bttn3').removeClass('display_class');
+            $('#bttn4').removeClass('display_class');
+            $('#bttn1').addClass('display_class');
+            $('#bttn2').addClass('class');
+        }
+
+
+
+
 // /                       
-},
-onSubmitOffer: function() {
-    
-    
-    var destination = $('#imputDestOffer').val();
-    var image = $('#imputImageOffer').val();
-    
-    var obj ={ "Destination": destination, "Image": image};
-     if (destination == "" || image == "") {
+    },
+    onSubmitOffer: function () {
+
+
+        var destination = $('#imputDestOffer').val();
+        var image = $('#imputImageOffer').val();
+
+        var obj = {"Destination": destination, "Image": image};
+        if (destination == "" || image == "") {
             console.log("fill all the fields for offer to be added");
             //alert("Please Fill All Fields");
         } else {
@@ -102,12 +107,12 @@ onSubmitOffer: function() {
             });
         }
         $('#message_to_be_shown').append("<p>Offer added succesfully</p>");
-         $('#imputDestOffer').val('');
+        $('#imputDestOffer').val('');
         $('#imputImageOffer').val('');
-       
+
         return false;
-},
-onHomePopulate: function (e) {
+    },
+    onHomePopulate: function (e) {
 
         $.ajax({
             type: "GET",
@@ -115,7 +120,7 @@ onHomePopulate: function (e) {
             dataType: "json",
 
             success: function (data) {
-                
+
                 //("#ul_offer_page").html('');
                 //var items = [];
                 $('#ul_offer_page').empty();
@@ -137,13 +142,13 @@ onHomePopulate: function (e) {
                     elem3.setAttribute('height', '175');
                     elem3.className = "img_class";
                     var elem4 = document.createElement("a");
-                    elem4.className = "container";
+                    elem4.className = "container writing_over_img";
 
                     var textElem4 = document.createTextNode(this.Destination);
                     elem4.appendChild(textElem4);
                     // var imgElem3 = document.createTextNode(this.Image);
-                    elem2.appendChild(elem3);
                     elem2.appendChild(elem4);
+                    elem2.appendChild(elem3);
                     elem1.appendChild(elem2);
 
                     var element = document.getElementById("ul_offer_page");
@@ -164,7 +169,7 @@ onHomePopulate: function (e) {
     },
     onOfferLoad: function (event) {
         var itemId = $(event.currentTarget).attr('id');
-            console.log("id from home ul "+itemId);
+        console.log("id from home ul " + itemId);
         $("#id_for_main").load('offers.html', function () {
             var offer = new OffersView();
             offer.onPackagesPopulate(itemId);

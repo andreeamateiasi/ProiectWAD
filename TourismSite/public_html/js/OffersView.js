@@ -7,21 +7,36 @@ OffersView.prototype = {
     initComponent: function () {
         this.attachListeners();
         this.onModalWinGetPackage();
-        this.ftc();
-        //this.onPackageLoad();
 
-        //this.onMainMenuItemOffer();
-        //this.onAllPackagesPopulate();
-        //this.onPackagesPopulate();
+        this.onHideButtonAddPackage();
+
     },
     attachListeners: function () {
         console.log("i got here");
         $('#submit_bttn').on('click', $.proxy(this.onModalWinGetPackage, this));
         $('#ul_offers_by_id').on('click', 'li', $.proxy(this.onPackageLoad, this));
 
-        //$('nav').on('click', '#offers', $.proxy(this.onAllPackagesPopulate, this));
-        //$('li').on('click', 'a', $.proxy(this.onMainMenuItemOffer, this));
-        // $('#ul_offer_page').on('click', 'li', $.proxy(this.onPackagesPopulate, this));
+    },
+    verifyUserType: function () {
+        var user = window.localStorage.getItem('userType');
+        return user;
+    },
+    onHideButtonAddPackage: function () {
+        var userType = this.verifyUserType();
+
+        if (userType == 'admin') {
+            //$('#div_for_add_offer_bttn').val('<button type="button" id="button_add_offer" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">Add Offer</button>');
+            var bttn = document.createElement('button');
+            bttn.id = 'button_add_package';
+            bttn.className = 'btn btn-info btn-lg';
+            bttn.setAttribute('data-toggle', 'modal');
+            bttn.setAttribute('data-target', "#myModal");
+            var text = document.createTextNode('Add package');
+            bttn.appendChild(text);
+            var e = document.getElementById('div_for_add_package_bttn');
+            e.appendChild(bttn);
+        }
+
     },
     onPackageLoad: function (event) {
         var itemId = $(event.currentTarget).attr('id');
@@ -32,28 +47,33 @@ OffersView.prototype = {
             package.onDropDownPackagePagePopulate(itemId);
         });
     },
-    ftc: function(dest, id){
+    getOfferID: function (dest) {
+        var id;
         $.ajax({
-                type: "GET",
-                url: "http://localhost:57312/api/offers/"+dest,                
-                dataType: 'json',
-                success: function (data) {
-                    $.each(data, function () {
-                      //id = this.OfferId;
-                    });
-                           //id  = data[0].OfferId;                       
-                 
-                },
-                fail: function () {
-                    console.log('failed');
-                }
+            type: "GET",
+            url: "http://localhost:57312/api/offers/" + dest,
+            dataType: 'json',
+            async: false,
+            cache: false,
+            success: function (data) {
 
-            });
+                id = data[0].OfferId;
+
+            },
+            fail: function () {
+                console.log('failed');
+            }
+
+        });
+
+         return id;
     },
     onModalWinGetPackage: function () {
-         var valid = true, input;
-         var offerId;
+
         var dest = $("#dest_country").val();
+
+        var offer = this.getOfferID(dest);
+
         var hotel = $("#hotel").val();
         var food = $("#food").val();
         var no_pass = $("#no_pass").val();
@@ -61,44 +81,51 @@ OffersView.prototype = {
         var dest_city = $("#dest_city").val();
         var img1 = $("#img1").val();
         var img2 = $("#img2").val();
-       
-// Returns successful data submission message when the entered information is stored in database.
-        
-            this.ftc(dest, offerId);
-            var obj = {
-            "OfferId": offerId,
+        var loc = $('#location_id').val();
+        var hf = $('#hotel_facilities').val();
+        var rf = $('#room_facilities').val();
+        var obj = {
+            "OfferId": offer,
             "DestinationCity": dest_city,
             "Image1": img1,
             "Image2": img2,
             "Hotel": hotel,
             "Food": food,
             "NoPassengers": no_pass,
-            "Price": price
+            "Location": loc,
+            "HotelFacility": hf,
+            "RoomFacility": rf
         };
-        /* 'Hotel=' + hotel + '&Food=' + food + '&NoPassengers='
-         + no_pass + '&Price=' + price + '&OfferId=' + destId + '&DestinationCity='
-         + dest_city + '&Image1=' + img1 + '&Image2=' + img2;*/
+
         if (hotel == '' || food == '' || no_pass == '' || price == ''
                 || dest == '' || dest_city == '' || img1 == '' || img2 == '') {
             console.log("fill all the fields");
-            //alert("Please Fill All Fields");
         } else {
-// AJAX code to submit form.
+            this.onAjaxCallPostPackage(obj, offer);
+        }
+        
+    },
+    onAjaxCallPostPackage: function (obj, offer) {
+        obj.OfferId = offer;
+        if (typeof offer !== 'undefined') {
             $.ajax({
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
 
                 },
-               crossOrigin: true,
+                crossOrigin: true,
                 type: "POST",
                 url: "http://localhost:57312/api/packages",
                 data: JSON.stringify(obj),
-                
+
                 dataType: 'json',
                 crossDomain: true,
+                timeout: 30000,
+
                 success: function () {
                     console.log('added succesfully');
+                    $('main').location.reload(true);
                 },
                 fail: function () {
                     console.log('failed');
@@ -106,7 +133,6 @@ OffersView.prototype = {
 
             });
         }
-        return false;
     },
     onPackagesPopulate: function (itemId) {
         $.ajax({

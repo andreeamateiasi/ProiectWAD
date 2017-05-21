@@ -48,7 +48,6 @@ and open the template in the editor.
 
 }
 .li_offer_ul{
-    position: relative;
     float: bottom;
     cursor: default;
 
@@ -65,6 +64,7 @@ body{
 }
 
 .img_class{
+    position:relative;
     border-radius: 8px;
     cursor: default;
     top:0; bottom:0; left:0; right:0;
@@ -74,12 +74,9 @@ body{
 }
 
 .div_img_offer {
-    width: 80%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
     cursor: default;
-
 }
 
 .container {
@@ -139,4 +136,30 @@ body{
     background: transparent;
     border: none !important;
     font-size:0;
+}
+#div_for_add_offer_bttn{
+    margin-left: 10%;
+}
+li:hover{
+    font-family: cursive;
+}
+/*.writing_over_img{
+ position: absolute;
+ margin-left: 0;
+}*/
+
+
+/*color: white; 
+   font: bold 16px/20px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   padding: 10px; */
+
+#div_for_add_package_bttn{
+    margin-left: 10%;
+}
+#div_for_add_trip_bttn{
+    margin-left: 10%;
+}
+.class_for_table{
+    background-color: grey;
 }
