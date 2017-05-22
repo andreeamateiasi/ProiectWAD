@@ -7,8 +7,9 @@ MyProfile.prototype = {
         this.onFormPopulate();
         //this.onSvaeButton();
         this.attachListeners();
-        this.getTripIds();
+        //this.getTripIds();
     },
+
     attachListeners: function () {
         $('#save_changes_my_profile_bttn').on('click', $.proxy(this.onSaveButton, this));
 
@@ -28,29 +29,40 @@ MyProfile.prototype = {
                     $('#userName').val(this.UserNane);
                     $('#email').val(this.Email);
                     $('#phone_num').val(this.PhoneNumber);
+                    $('#pass').val(this.password);
                 });
             }
         });
     },
+
     onSaveButton: function () {
         var userId = $('#userId').val();
+        var userType = $('#usersType').val();
         var firstName = $('#firstName').val();
         var lastName = $('#lastName').val();
         var userName = $('#userName').val();
         var email = $('#email').val();
         var phone = $('#phone_num').val();
-
+        var password = $('#pass').val();
         var obj = {
-            'FirstName': firstName,
-            'LastName': lastName,
+            'UserId': userId,
             'UserNane': userName,
+            'FirstName': firstName,
+            'userType': userType,
+            'LastName': lastName,
             'Email': email,
-            'PhoneNumber': phone
+            'PhoneNumber': phone,
+            'password': password
         };
         $.ajax({
+             headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+
+                },
             type: 'PUT',
             url: "http://localhost:57312/api/users/" + userId,
-            data: obj,
+            data: JSON.stringify(obj),
             success: function () {
                 console.log('user updated successfully');
             },
@@ -58,8 +70,11 @@ MyProfile.prototype = {
                 console.log('error updating user');
             }
         });
-    },
-    getTripIds: function () {
+        localStorage.removeItem('username');
+        window.localStorage.setItem('username',userName ); 
+        this.onFormPopulate();
+    }
+   /* getTripIds: function () {
         //table_package_info_books
         var userId = $('#userId').val();
         var arrayTripId = [];
@@ -82,6 +97,6 @@ MyProfile.prototype = {
         if (arrayTripId.length !== 0) {
             this.getTrips(arrayTripId);
         }
-    }
-   
+    }*/
+
 };

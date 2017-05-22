@@ -50,11 +50,23 @@ namespace TourismApiWAD.Controllers
             return Ok(user);
         }
 
+        [Route("api/users/get/{userId}")]
+        [ResponseType(typeof(Package))]
+        public IHttpActionResult GetUserById(int userId)
+        {
+            IEnumerable<User> user = db.User.Where(pk => pk.UserId == userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
 
+            return Ok(user);
+        }
 
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        [Route ("api/users/{id}")]
+        public IHttpActionResult PutUser(int id,[FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
@@ -87,6 +99,8 @@ namespace TourismApiWAD.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+       
+
         // POST: api/Users
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
@@ -104,6 +118,7 @@ namespace TourismApiWAD.Controllers
 
         // DELETE: api/Users/5
         [ResponseType(typeof(User))]
+        [Route ("api/users/delete/id")]
         public IHttpActionResult DeleteUser(int id)
         {
             User user = db.User.Find(id);
