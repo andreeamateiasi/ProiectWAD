@@ -37,6 +37,23 @@ namespace TourismApiWAD.Controllers
             return Ok(package);
         }
 
+
+        [Route("api/packages/{dest}")]
+        [ResponseType(typeof(Package))]
+        public IHttpActionResult GetPackageByDest(string dest)
+        {
+            IEnumerable<Package> package = db.Package.Where(pk => pk.Hotel == dest);
+            if (package == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(package);
+        }
+
+
+
+
         [Route("api/packages/offer/{id}")]
         [ResponseType(typeof(Package))]
         public IHttpActionResult GetPackageByOffer(int id)

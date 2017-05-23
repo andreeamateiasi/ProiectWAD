@@ -45,19 +45,25 @@ namespace TourismApiWAD.Controllers
         [Route("api/tripItinerariums/getTripPackage/{id}")]
         public IHttpActionResult GetTripItinerariumWithPackage(int id)
         {
+            
+
             TripItinerarium tripItinerarium = db.TripItinerarium.Find(id);
 
-            int idPackage = tripItinerarium.PackageId;
-            Package package = db.Package.Find(idPackage);
-            string city = package.DestinationCity;
-            string hotel = package.Hotel;
-            TripPackage finalObj = new TripPackage();
-            finalObj.Hotel = hotel;
-            finalObj.Plane = tripItinerarium.Plane;
-            finalObj.Start = tripItinerarium.Start;
-            finalObj.Finish = tripItinerarium.Finish;
-            finalObj.Price = tripItinerarium.Price;
-            finalObj.DestinationCity = city;
+            
+                int idPackage = tripItinerarium.PackageId;
+                Package package = db.Package.Find(idPackage);
+                string city = package.DestinationCity;
+                string hotel = package.Hotel;
+                TripPackage finalObj = new TripPackage();
+                finalObj.Hotel = hotel;
+                finalObj.Plane = tripItinerarium.Plane;
+                finalObj.Start = tripItinerarium.Start;
+                finalObj.Finish = tripItinerarium.Finish;
+                finalObj.Price = tripItinerarium.Price;
+                finalObj.DestinationCity = city;
+            
+
+            
 
             if (finalObj == null)
             {
@@ -133,6 +139,13 @@ namespace TourismApiWAD.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = tripItinerarium.TripItinerariumId }, tripItinerarium);
         }
+
+
+
+
+
+
+
 
         // DELETE: api/TripItinerariums/5
         [ResponseType(typeof(TripItinerarium))]

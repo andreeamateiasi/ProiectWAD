@@ -14,13 +14,14 @@ PackageView.prototype = {
         $('table').on('click', 'tr', $.proxy(this.onTableSelect, this));
 
     },
-    onTableSelect: function(e){
-      var tripId = $(e.currentTarget).attr('id');
-      window.localStorage.setItem('idTrip', tripId );
-      $(tripId).addClass('class_for_table');
-     // return tripId;
+
+    onTableSelect: function (e) {
+        var tripId = $(e.currentTarget).attr('id');
+        window.localStorage.setItem('idTrip', tripId);
+        $(tripId).addClass('class_for_table');
+        // return tripId;
     },
-     verifyUserType: function () {
+    verifyUserType: function () {
         var user = window.localStorage.getItem('userType');
         return user;
     },
@@ -41,24 +42,46 @@ PackageView.prototype = {
         }
 
     },
+    findPackageId: function (dest) {
+        var id;
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost:57312/api/packages/" + dest,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+
+                id = data[0].PackageId;
+
+            },
+            fail: function () {
+                console.log('failed  to find package by dest');
+            }
+        });
+        return id;
+    },
     onSubmitTrip: function () {
 
-        var id = $('#package_id').val();
+
+        var dest = $('#package_id').val();
+
+        var packageId = this.findPackageId(dest);
+
         var plane = $('#plane_trip_add').val();
         var departureDate = $('#departure_date').val();
-        var returnDate =$('#return_date').val();
+        var returnDate = $('#return_date').val();
         var price = $('#price_add_trip').val();
-        
-        var obj = {"PackageId": id,"Plane": plane, "Start": departureDate, "Finish": returnDate, "Price": price};
-        
-        if (plane == "" || departureDate == "" || returnDate == '' || id == '' || price == '') {
+
+        var obj = {"PackageId": packageId, "Plane": plane, "Start": departureDate, "Finish": returnDate, "Price": price};
+
+        if (plane == "" || departureDate == "" || returnDate == '' || packageId == '' || price == '') {
             console.log("fill all the fields for trip to be added");
             //alert("Please Fill All Fields");
         } else {
 // AJAX code to submit form.
             $.ajax({
                 headers: {
-                    'Accept': 'application/json',
+                    'Accept': 'appli    cation/json',
                     'Content-Type': 'application/json'
                 },
                 type: "POST",
@@ -85,18 +108,18 @@ PackageView.prototype = {
 
         return false;
     },
-    bookPackage: function(){
+    bookPackage: function () {
         //window.localStorage.setItem('userId', this.UserId);
         var userId = window.localStorage.getItem('userId');//get from token
-       // var tripItinerariumId = this.onTableSelect();//get from dropdown
+        // var tripItinerariumId = this.onTableSelect();//get from dropdown
         var tripId = window.localStorage.getItem('idTrip');
-        var obj = {"UserId": userId, "TripItinerariumId": tripId };
-        
+        var obj = {"UserId": userId, "TripItinerariumId": tripId};
+
         $.ajax({
             headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             type: "POST",
             url: "http://localhost:57312/api/books",
             data: JSON.stringify(obj),
@@ -104,7 +127,7 @@ PackageView.prototype = {
             crossDomain: true,
             success: function () {
                 $('#notif').append("<div id='notif_book_success' class='alert alert-success'><strong>Success!</strong> Package booked successfully</div>");
-                
+
                 console.log('book made  succesfully');
             },
             fail: function () {
@@ -113,20 +136,20 @@ PackageView.prototype = {
             }
 
         });
-        
+
     },
     onDropDownPackagePagePopulate: function (itemId) {
         $.ajax({
             type: "GET",
-            url: "http://localhost:57312/api/tripitinerariums/package/"+itemId,
+            url: "http://localhost:57312/api/tripitinerariums/package/" + itemId,
             dataType: "json",
             crossDomain: true,
             success: function (data) {
 
                 $.each((data), function () {
                     //$('#dropDownHome').append($("<li></li>").val(this['Destination']).html(this['Destination']));
-                   // if (itemId == this.PackageId) {
-                        console.log("trip it id for package" + itemId);
+                    // if (itemId == this.PackageId) {
+                    console.log("trip it id for package" + itemId);
 //                        var elem1 = document.createElement("li");
 //                        elem1.className = 'li_dropdown_home';
 //                        elem1.id = this.PackageId;
@@ -139,28 +162,28 @@ PackageView.prototype = {
 //                        
 //                        
 //                            
-                        var tr = document.createElement("tr");
-                        tr.id = this.TripItinerariumId;
-                        var td1 = document.createElement("td");
-                        var td2 = document.createElement("td");
-                        var td3 = document.createElement("td");
-                        var td4 = document.createElement("td");
-                        var plane = document.createTextNode(this.Plane);
-                        var start = document.createTextNode(this.Start);
-                        var finish = document.createTextNode(this.Finish);
-                        var price = document.createTextNode(this.Price);
-                        td1.appendChild(plane);
-                        td2.appendChild(start);
-                        td3.appendChild(finish);
-                        td4.appendChild(price);
-                        tr.appendChild(td1);
-                        tr.appendChild(td2);
-                        tr.appendChild(td3);
-                        tr.appendChild(td4);
-                        var element = document.getElementById("table_package_info_page");
-                        element.appendChild(tr);
-                        //li_dropdown_home
-                   // }
+                    var tr = document.createElement("tr");
+                    tr.id = this.TripItinerariumId;
+                    var td1 = document.createElement("td");
+                    var td2 = document.createElement("td");
+                    var td3 = document.createElement("td");
+                    var td4 = document.createElement("td");
+                    var plane = document.createTextNode(this.Plane);
+                    var start = document.createTextNode(this.Start);
+                    var finish = document.createTextNode(this.Finish);
+                    var price = document.createTextNode(this.Price);
+                    td1.appendChild(plane);
+                    td2.appendChild(start);
+                    td3.appendChild(finish);
+                    td4.appendChild(price);
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    tr.appendChild(td3);
+                    tr.appendChild(td4);
+                    var element = document.getElementById("table_package_info_page");
+                    element.appendChild(tr);
+                    //li_dropdown_home
+                    // }
                 });
             },
             failure: function (response) {
@@ -168,7 +191,7 @@ PackageView.prototype = {
             }
 
         });
-       
+
     },
     onPackagePagePopulate: function (itemId) {
         $.ajax({
@@ -190,14 +213,28 @@ PackageView.prototype = {
                         li2.src = this.Image2;
                         var elem = document.getElementById('info_package');
 
-                        var textElem2 = document.createTextNode("You will be staying at " + this.Hotel
-                                + ", meals included: " + this.Food + ". This package is for "
-                                + this.NoPassengers + " passengers");
+                        var pH = document.createElement('span');
+                        pH.id = 'id_span'
+
+                        var textElem2 = document.createTextNode("You will be staying at ");
+
+                        var hotelText = document.createTextNode(this.Hotel);
+                        pH.appendChild(hotelText);
+
+                        var textSpanAfter = document.createTextNode(", meals included: " + this.Food + ". This package is for " + this.NoPassengers + " passengers");
+
+
                         elem.appendChild(textElem2);
+                        elem.appendChild(pH);
+                        elem.appendChild(textSpanAfter);
+
+
+
                         var p1 = document.getElementById('location');
                         var textp1 = document.createTextNode(this.Location);
                         p1.appendChild(textp1);
                         var p2 = document.getElementById('facilityHotel');
+
                         var textp2 = document.createTextNode(this.HotelFacility);
                         p2.appendChild(textp2);
                         var p3 = document.getElementById('facilityRoom');

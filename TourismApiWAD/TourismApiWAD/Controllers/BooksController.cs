@@ -31,14 +31,17 @@ namespace TourismApiWAD.Controllers
         public IHttpActionResult GetBooksByUserId(int id)
         {
             IEnumerable<Book> books = db.Book.Where(it => it.UserId == id);
+
+
+
             if (books == null)
             {
                 return NotFound();
             }
 
             return Ok(books);
-        }
 
+        }
 
         // GET: api/Books/5
         [ResponseType(typeof(Book))]
@@ -105,6 +108,7 @@ namespace TourismApiWAD.Controllers
 
         // DELETE: api/Books/5
         [ResponseType(typeof(Book))]
+        [Route ("api/books/delete/{id}")]
         public IHttpActionResult DeleteBook(int id)
         {
             Book book = db.Book.Find(id);

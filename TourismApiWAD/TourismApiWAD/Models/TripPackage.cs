@@ -13,6 +13,7 @@ namespace TourismApiWAD.Models
         public int Price { get; set; }
         public string DestinationCity { get; set; }
         public string Hotel { get; set; }
+        public int BookingId { get; set; }
 
     }
 }

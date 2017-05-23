@@ -6,7 +6,7 @@ Login.prototype = {
     init: function () {
 
         this.attachListeners();
-       // this.initKendoComponents();
+        // this.initKendoComponents();
         this.initFacebook();
     },
     attachListeners: function () {
@@ -18,11 +18,12 @@ Login.prototype = {
                 $('#login_button').trigger('click');
             }
         });
-        $('#go_back').on('click', function(){
+        $('#go_back').on('click', function () {
             window.location.href = "index.html";
         });
+        
     },
-  
+
     onInputBlur: function (event) {
         if ($("#username").val().length === 0)
         {
@@ -42,21 +43,21 @@ Login.prototype = {
     onLogin: function () {
         this.onInputBlur();
         $('#notification_li').empty();
-        
+
         var username = $("#username").val();
         var password = $("#password").val();
         if ($("#alert_icon_username").hasClass('hide') && $("#alert_icon_password").hasClass('hide'))
 
         {
-        var user = {'username': username, 'password': password };
+            var user = {'username': username, 'password': password};
 
             $.ajax({
                 type: "GET",
-                url: "http://localhost:57312/api/users/"+username,
+                url: "http://localhost:57312/api/users/" + username,
                 dataType: "json",
                 crossDomain: true,
                 success: function (data) {
-                        console.log(this.password);
+                    console.log(this.password);
                     $.each((data), function () {
                         if (password == this.password) {
                             var currentUser = data[0];
@@ -67,10 +68,10 @@ Login.prototype = {
                             window.localStorage.setItem('username', this.UserNane);
                             window.localStorage.setItem('userType', this.userType);
                             window.localStorage.setItem('userId', this.UserId);
-                            
+
                             //window.localStorage.setItem('sessionToken', currentUser);
                             //window.localStorage.setItem('username', username);
-                           //var here = window.localStorage.getItem('username');
+                            //var here = window.localStorage.getItem('username');
                         }
                     });
                 },
@@ -83,12 +84,9 @@ Login.prototype = {
         {
             $('#notification_li').append("<div class='alert alert-danger'><strong>Error!</strong> Enter username and password.</div>");
         }
-    },
-
-    initFacebook: function () {
-
-
     }
+
+    
 };
 
 $(document).ready(function () {

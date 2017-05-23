@@ -22,11 +22,11 @@ UsersView.prototype = {
 //
 //            },
             url: "http://localhost:57312/api/users/delete/" + id,
-          type: "DELETE",
+            type: "DELETE",
             success: function(){
                 console.log('success');
                 $( "#table_users" ).load( "users.html #table_users" );
-               
+
             },
             error: function(){
                 console.log('error');
