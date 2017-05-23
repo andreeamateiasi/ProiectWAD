@@ -65,7 +65,7 @@ namespace TourismApiWAD.Controllers
 
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
-        [Route ("api/users/{id}")]
+        [Route ("api/users/put/{id}")]
         public IHttpActionResult PutUser(int id,[FromBody] User user)
         {
             if (!ModelState.IsValid)
@@ -117,8 +117,9 @@ namespace TourismApiWAD.Controllers
         }
 
         // DELETE: api/Users/5
+        [HttpDelete]
         [ResponseType(typeof(User))]
-        [Route ("api/users/delete/id")]
+        [Route ("api/users/delete/{id}")]
         public IHttpActionResult DeleteUser(int id)
         {
             User user = db.User.Find(id);

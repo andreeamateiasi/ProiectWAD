@@ -7,7 +7,8 @@ MyProfile.prototype = {
         this.onFormPopulate();
         //this.onSvaeButton();
         this.attachListeners();
-        //this.getTripIds();
+        this.getTrips();
+        //this.populate();
     },
 
     attachListeners: function () {
@@ -55,13 +56,13 @@ MyProfile.prototype = {
             'password': password
         };
         $.ajax({
-             headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
 
-                },
+            },
             type: 'PUT',
-            url: "http://localhost:57312/api/users/" + userId,
+            url: "http://localhost:57312/api/users/put/" + userId,
             data: JSON.stringify(obj),
             success: function () {
                 console.log('user updated successfully');
@@ -71,22 +72,23 @@ MyProfile.prototype = {
             }
         });
         localStorage.removeItem('username');
-        window.localStorage.setItem('username',userName ); 
+        window.localStorage.setItem('username', userName);
         this.onFormPopulate();
-    }
-   /* getTripIds: function () {
-        //table_package_info_books
-        var userId = $('#userId').val();
-        var arrayTripId = [];
+    },
+    getTripIds: function (arrayTripId) {
+        arrayTripId = [];
+        var userId = window.localStorage.getItem('userId');//var userId = $('#userId').val();
         $.ajax({
             type: "GET",
-            url: "http://localhost:57312/api/books/user/" + userId, //de def in api
+            url: "http://localhost:57312/api/books/user/" + userId,
             dataType: "json",
             crossDomain: true,
+            async: false,
             success: function (data) {
 
                 $.each(data, function () {
-                    arrayTripId.push(this.TripItinerariumId);
+                    if (typeof this.TripItinerariumId !== 'undefined')
+                        arrayTripId.push(this.TripItinerariumId);
                 });
             },
             failure: function (response) {
@@ -94,9 +96,71 @@ MyProfile.prototype = {
             }
 
         });
-        if (arrayTripId.length !== 0) {
-            this.getTrips(arrayTripId);
-        }
-    }*/
+        return arrayTripId;
 
+
+    },
+    getTrips: function () {
+        $("#table_package_info_books").empty();
+        var array = this.getTripIds(array);
+        for (i = 0; i < array.length; i++) {
+           
+            this.populate(array[i]);
+        }
+    },
+    populate: function (id) {
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost:57312/api/tripItinerariums/getTripPackage/"+id,
+            dataType: "json",
+            async: false,
+             success: function (data) {
+                 console.log(data);
+                //$.each(data, function () {
+
+                    var trU = document.createElement("tr");
+                    
+                    var td01 = document.createElement("td");
+                    var td02 = document.createElement("td");
+                    var td03 = document.createElement("td");
+                    var td04 = document.createElement("td");
+                    var td05 = document.createElement("td");
+                    var td06 = document.createElement("td");
+
+                    var city = document.createTextNode(data.DestinationCity);
+                    var hotel = document.createTextNode(data.Hotel);
+                    var flight = document.createTextNode(data.Plane);
+                    var departure = document.createTextNode(data.Start);
+                    var returne = document.createTextNode(data.Finish);
+                    var price = document.createTextNode(data.Price);
+
+
+                    td01.appendChild(city);
+                    td02.appendChild(hotel);
+                    td03.appendChild(flight);
+                    td04.appendChild(departure);
+                    td05.appendChild(returne);
+                    td06.appendChild(price);
+
+                    trU.appendChild(td01);
+                    trU.appendChild(td02);
+                    trU.appendChild(td03);
+                    trU.appendChild(td04);
+                    trU.appendChild(td05);
+                    trU.appendChild(td06);
+
+                    var elementU = document.getElementById("table_package_info_books");
+                    elementU.appendChild(trU);
+
+
+               // });
+
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+           
+    }
+    
 };

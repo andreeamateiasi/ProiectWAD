@@ -25,6 +25,7 @@ namespace TourismApiWAD.Controllers
 
         // GET: api/Packages/5
         [ResponseType(typeof(Package))]
+        [Route ("api/packages/getPackage/{id}")]
         public IHttpActionResult GetPackage(int id)
         {
             Package package = db.Package.Find(id);

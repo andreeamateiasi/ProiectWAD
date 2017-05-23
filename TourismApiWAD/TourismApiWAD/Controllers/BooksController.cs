@@ -24,6 +24,22 @@ namespace TourismApiWAD.Controllers
             return db.Book;
         }
 
+
+        [HttpGet]
+        [ResponseType(typeof(Book))]
+        [Route("api/books/user/{id}")]
+        public IHttpActionResult GetBooksByUserId(int id)
+        {
+            IEnumerable<Book> books = db.Book.Where(it => it.UserId == id);
+            if (books == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(books);
+        }
+
+
         // GET: api/Books/5
         [ResponseType(typeof(Book))]
         public IHttpActionResult GetBook(int id)

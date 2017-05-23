@@ -13,45 +13,27 @@ UsersView.prototype = {
         $('#submit_edited_user').on('click', $.proxy(this.saveEditedUser, this));
         $('#del_bttn').on('click', $.proxy(this.deleteUser, this));
     },
-    getUser: function(id){
-        var obj;
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:57312/api/users/get/"+id,
-            dataType: 'json',
-            async: false,
-            cache: false,
-            success: function (data) {
-//                $.each(data, function(){
-//                    obj = data;
-//                });
-                obj = data[0];
-
-            },
-            fail: function () {
-                console.log('failed');
-            }
-
-        });
-        return obj;
-
-    },
     deleteUser: function () {
         var id= window.localStorage.getItem('idForEdit');
-        var obj = this.getUser(id);
         $.ajax({
-            type: 'DELETE',
+//            headers: {
+//                'Accept': 'application/json',
+//                'Content-Type': 'application/json'
+//
+//            },
             url: "http://localhost:57312/api/users/delete/" + id,
-           // data: JSON.stringify(obj),
-           // contentType:'application/json',  // <---add this
-    //dataType: 'text', 
+          type: "DELETE",
             success: function(){
                 console.log('success');
+                $( "#table_users" ).load( "users.html #table_users" );
+               
             },
             error: function(){
                 console.log('error');
             }
         });
+         //$( "#table_users" ).load( "users.html #table_users" );
+         this.onAllUsersPopulate();
     },
     getId: function (e) {
         if (typeof e !== 'undefined') {

@@ -26,6 +26,7 @@ namespace TourismApiWAD.Controllers
 
         // GET: api/TripItinerariums/5
         [ResponseType(typeof(TripItinerarium))]
+        [Route ("api/tripItinerariums/getTrip/{id}")]
         public IHttpActionResult GetTripItinerarium(int id)
         {
             TripItinerarium tripItinerarium = db.TripItinerarium.Find(id);
@@ -37,10 +38,43 @@ namespace TourismApiWAD.Controllers
             return Ok(tripItinerarium);
         }
 
-        [HttpGet]        
+
+
+        // GET: api/TripItinerariums/5
         [ResponseType(typeof(TripItinerarium))]
+        [Route("api/tripItinerariums/getTripPackage/{id}")]
+        public IHttpActionResult GetTripItinerariumWithPackage(int id)
+        {
+            TripItinerarium tripItinerarium = db.TripItinerarium.Find(id);
+
+            int idPackage = tripItinerarium.PackageId;
+            Package package = db.Package.Find(idPackage);
+            string city = package.DestinationCity;
+            string hotel = package.Hotel;
+            TripPackage finalObj = new TripPackage();
+            finalObj.Hotel = hotel;
+            finalObj.Plane = tripItinerarium.Plane;
+            finalObj.Start = tripItinerarium.Start;
+            finalObj.Finish = tripItinerarium.Finish;
+            finalObj.Price = tripItinerarium.Price;
+            finalObj.DestinationCity = city;
+
+            if (finalObj == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(finalObj);
+
+
+        }
+
+
+
+        [HttpGet]        
+        [ResponseType(typeof(TripPackage))]
         [Route("api/tripitinerariums/package/{id}")]
-        public IHttpActionResult GetPackage(int id)
+        public IHttpActionResult GetTripPackage(int id)
         {
             IEnumerable<TripItinerarium> tripItinerariums = db.TripItinerarium.Where(it => it.PackageId == id);
             if (tripItinerariums == null)
