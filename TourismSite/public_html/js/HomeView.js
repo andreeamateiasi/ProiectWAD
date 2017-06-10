@@ -1,9 +1,3 @@
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 HomeView = function () {
     this.initComponent();
 };
@@ -14,7 +8,6 @@ HomeView.prototype = {
 
         this.onDropDownPopulate();
         this.onHomePopulate();
-        // this.onOfferLoad();
         this.verifyUserType();
         this.onChangeButtons();
         this.onHideDropDown();
@@ -26,10 +19,7 @@ HomeView.prototype = {
         $('#submit_bttn_home').on('click', $.proxy(this.onSubmitOffer, this));
         $('#smth').on('click', 'li', $.proxy(this.onOfferLoad, this));
     },
-//    onDropDownSelect: function (e) {
-//        var itemId = $(e.currentTarget).attr('id');
-//        
-//    },
+
     verifyUserType: function () {
         var user = window.localStorage.getItem('userType');
         return user;
@@ -56,14 +46,9 @@ HomeView.prototype = {
         if (user == 'admin' || user == 'user') {
             $('#bttn1').removeClass('display_class');
             $('#bttn2').removeClass('display_class');
-            //$('#log_out_bttn').append('Log out');
-            //$('#bttn3').addClass('display_class');
-            // $('#bttn4').addClass('display_class');
+
         }
         if (user == undefined) {
-            // $('#register_bttn').append('Register');
-
-            // $('#log_in_bttn').append('Log in');
             $('#bttn3').removeClass('display_class');
             $('#bttn4').removeClass('display_class');
             $('#bttn1').addClass('display_class');
@@ -86,7 +71,6 @@ HomeView.prototype = {
             console.log("fill all the fields for offer to be added");
             //alert("Please Fill All Fields");
         } else {
-// AJAX code to submit form.
             $.ajax({
                 headers: {
                     'Accept': 'application/json',
@@ -121,13 +105,9 @@ HomeView.prototype = {
             dataType: "json",
 
             success: function (data) {
-
-                //("#ul_offer_page").html('');
-                //var items = [];
                 $('#ul_offer_page').empty();
 
                 $.each(data, function () {
-                    //items.push($("<li class='li_offer_ul'></li>").val(this['Destination']).html(this['Destination']));
 
                     var elem1 = document.createElement("li");
                     elem1.className = 'li_offer_ul';
@@ -143,24 +123,18 @@ HomeView.prototype = {
                     elem3.setAttribute('height', '175');
                     elem3.className = "img_class";
                     var elem4 = document.createElement("a");
-                    elem4.className = "container writing_over_img";
+                    elem4.className = "container";
 
                     var textElem4 = document.createTextNode(this.Destination);
                     elem4.appendChild(textElem4);
-                    // var imgElem3 = document.createTextNode(this.Image);
-                    elem2.appendChild(elem4);
                     elem2.appendChild(elem3);
                     elem1.appendChild(elem2);
+                    elem2.appendChild(elem4);
 
                     var element = document.getElementById("ul_offer_page");
                     element.appendChild(elem1);
 
                 });
-                // $("#ul_offer_page").append(items.join(''));
-//                $.each((data), function () {
-//                    $('#ul_offer_page').append($("<li class='li_offer_ul'></li>").val(this['Destination']).html(this['Destination']));
-//                });
-
             },
             failure: function (response) {
                 alert(response.d);
@@ -176,13 +150,6 @@ HomeView.prototype = {
             offer.onPackagesPopulate(itemId);
         });
     },
-    /*   <a title=
-     <a  title="Early booking Bulgaria" id="first-offer">
-     <img src="Photos/bulgariaa.jpg" alt="Bulgaria" width="275" height="175">
-     <div >Early booking Bulgaria 2017</div>
-     
-     </a>
-     */
 
     onDropDownPopulate: function () {
         $.ajax({
@@ -204,7 +171,6 @@ HomeView.prototype = {
 
                     var element = document.getElementById("dropDownHome");
                     element.appendChild(elem1);
-                    //li_dropdown_home
                 });
             },
             failure: function (response) {

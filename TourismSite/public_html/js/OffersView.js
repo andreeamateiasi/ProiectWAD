@@ -161,7 +161,7 @@ OffersView.prototype = {
                         elem3.setAttribute('height', '175');
                         elem3.className = "img_class";
                         var elem4 = document.createElement("a");
-                        elem4.className = "container";
+                        elem4.className = "container    ";
                         var textElem4 = document.createTextNode(this.DestinationCity + " - " + this.Hotel);
                         //var textElem5 = document.createTextNode();
                         elem4.appendChild(textElem4);

@@ -108,7 +108,7 @@ namespace TourismApiWAD.Controllers
 
         // DELETE: api/Books/5
         [ResponseType(typeof(Book))]
-        [Route ("api/books/delete/{id}")]
+        [Route ("api/books/deleteBook/{id}")]
         public IHttpActionResult DeleteBook(int id)
         {
             Book book = db.Book.Find(id);

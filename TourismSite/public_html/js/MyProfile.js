@@ -26,13 +26,13 @@ MyProfile.prototype = {
     },
     deleteBooking: function () {
         var id = window.localStorage.getItem('idForCancelBooking');
+        console.log(id);
         $.ajax({
             type: "DELETE",
-            url: "http://localhost:57312/api/books/delete/" + id,
+            url: "http://localhost:57312/api/books/deleteBook/" + id,
 
             success: function () {
                 console.log('success');
-                $('#table_package_info_books').row(id).remove().draw( false );
             },
             error: function () {
                 console.log('error');

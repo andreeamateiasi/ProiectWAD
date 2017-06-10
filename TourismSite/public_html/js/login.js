@@ -7,7 +7,6 @@ Login.prototype = {
 
         this.attachListeners();
         // this.initKendoComponents();
-        this.initFacebook();
     },
     attachListeners: function () {
         $('#username').on('keyup', $.proxy(this.onInputBlur, this));

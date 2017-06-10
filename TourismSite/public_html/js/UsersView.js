@@ -33,7 +33,6 @@ UsersView.prototype = {
             }
         });
          //$( "#table_users" ).load( "users.html #table_users" );
-         this.onAllUsersPopulate();
     },
     getId: function (e) {
         if (typeof e !== 'undefined') {
